@@ -1,12 +1,15 @@
+/* mortydex.css */
 
-
-/* Fuente Rick & Morty */
+/* Fuente Rick & Morty y fondo de la página */
 body {
   font-family: 'Chewy', cursive;
-  background-color: #fff;
   margin: 0;
   padding: 0;
   color: #333;
+
+  /* Imagen de fondo */
+  background: url('/static/images/background/fondo.jpg') no-repeat center center fixed;
+  background-size: cover;
 }
 
 /* Encabezado */
@@ -65,36 +68,66 @@ header nav a:hover {
   background-color: #0099aa;
 }
 
-/* Grid de Mortys */
+/* GRID 3×3 fijo */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   padding: 20px;
   max-width: 1200px;
   margin: auto;
 }
 
+/* TARJETA DE MORTY UNIFORME */
 .card {
   background-color: #f2f2f2;
   border-radius: 15px;
   overflow: hidden;
-  text-align: center;
-  transition: transform 0.3s;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   box-shadow: 2px 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
 }
 
 .card:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
+/* IMAGEN: altura fija, mantener proporción y centrar sin recortar */
 .card img {
-  width: 100%;
-  height: auto;
+  width: auto;               /* que respete la proporción */
+  max-width: 100%;           /* no salga del ancho del contenedor */
+  height: 200px;             /* todas las imágenes tendrán 200px de alto */
+  object-fit: contain;       /* quepan completas dentro del recuadro */
+  object-position: center;   /* centrar tanto horizontal como verticalmente */
+  display: block;
+  margin: 0 auto;            /* centrar en caso de que queden márgenes */
+  background-color: #f2f2f2; /* mismo fondo que la tarjeta */
 }
 
-.card h3 {
-  margin: 10px 0;
+/* CONTENIDO (nombre y tipo) */
+.card h3,
+.card p {
+  margin: 8px 0;
+  text-align: center;
+  font-size: 1rem;
+  flex: 0 0 auto;
+}
+
+/* Separa el texto del borde superior de la tarjeta */
+.card .card-text {
+  margin-top: 12px;
+}
+
+/* Icono junto al tipo */
+.card .type-icon {
+  width: 50px;
+  height: 50px;
+  vertical-align: middle;
+  margin-left: px;
 }
 
 /* Paginación */
@@ -117,4 +150,18 @@ header nav a:hover {
 
 .pagination button:hover {
   background-color: #0099aa;
+}
+
+/* Responsive: 2 columnas en tabletas */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Responsive: 1 columna en móvil */
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
