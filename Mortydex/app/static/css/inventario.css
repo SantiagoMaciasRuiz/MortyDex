@@ -1,0 +1,76 @@
+/* Inventario – Mortydex */
+body {
+  font-family: 'Chewy', cursive;
+  background-color: #fff;
+  margin: 0;
+  color: #333;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #111;
+  color: #00c8c8;
+  padding: 10px 20px;
+}
+header .logo {
+  font-size: 28px;
+}
+header nav a {
+  margin-left: 15px;
+  color: #00c8c8;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+header nav a.active,
+header nav a:hover {
+  color: #fff;
+}
+
+/* Contenedor principal */
+.inventory-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+.inventory-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Grid de items */
+.inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+}
+.item-card {
+  background-color: #f2f2f2;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 2px 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+.item-card:hover {
+  transform: scale(1.03);
+}
+.item-card img {
+  width: 100%;
+  height: auto;
+}
+.item-card h3 {
+  margin: 10px 0 5px;
+}
+.item-card p {
+  margin: 0 0 10px;
+  font-weight: bold;
+}
+.empty-msg {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+  grid-column: 1 / -1; /* Ocupa toda la rejilla al estar vacío */
+}
