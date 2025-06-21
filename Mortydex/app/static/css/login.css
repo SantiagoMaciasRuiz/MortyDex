@@ -1,86 +1,78 @@
-/* Login – Mortydex */
+/* login.css – estilos de la página de login */
+
+/* 1) Anula el background global */
 body {
-  font-family: 'Chewy', cursive;
-  background-color: #fff;
-  margin: 0;
-  color: #333;
+  background: none !important;
 }
 
-/* Header */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #111;
-  color: #00c8c8;
-  padding: 10px 20px;
-}
-header .logo {
-  font-size: 28px;
-}
-header nav a {
-  margin-left: 15px;
-  color: #00c8c8;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-header nav a.active,
-header nav a:hover {
-  color: #fff;
-}
-
-/* Contenedor de login centrado */
+/* 2) Centrado vertical y horizontal */
 .login-page {
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: calc(100vh - 60px); /* Resta altura del header */
-  padding: 10px;
+  align-items: center;
+  height: calc(100vh - 80px);
 }
+
+/* 3) Tarjeta */
 .login-card {
-  background-color: #f2f2f2;
+  background: #f2f2f2;
   padding: 30px;
   border-radius: 12px;
   box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
-  width: 100%;
-  max-width: 350px;
   text-align: center;
+  width: 100%;
+  max-width: 360px;
 }
 .login-card h2 {
-  margin: 0 0 20px;
+  margin-bottom: 20px;
+  font-family: 'Chewy', cursive;
+}
+
+/* 4) Formulario */
+.login-card form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 .login-card input {
   width: 80%;
   padding: 12px;
-  margin-bottom: 15px;
   border: 2px solid #00c8c8;
   border-radius: 8px;
   font-size: 16px;
-  outline: none;
+  font-family: 'Chewy', cursive;
 }
 .login-card button {
-  width: 100%;
-  padding: 12px;
-  background-color: #00c8c8;
+  font-family: 'Chewy', cursive;
+  padding: 12px 20px;
+  background: #00c8c8;
   color: #fff;
   border: none;
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background 0.3s;
 }
 .login-card button:hover {
-  background-color: #0099aa;
+  background: #0099aa;
 }
-.login-links {
-  margin-top: 15px;
-  font-size: 14px;
+
+/* 5) Enlaces auxiliares */
+.aux-links {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
-.login-links a {
+.aux-links a {
+  font-family: 'Chewy', cursive;
   color: #00c8c8;
   text-decoration: none;
   transition: color 0.3s;
 }
-.login-links a:hover {
+.aux-links a:hover {
   color: #0099aa;
 }
+
+

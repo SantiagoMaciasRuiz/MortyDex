@@ -1,40 +1,91 @@
 /* mortydex.css */
 
-/* Fuente Rick & Morty y fondo de la página */
+/* Fuente y fondo */
 body {
   font-family: 'Chewy', cursive;
-  margin: 0;
-  padding: 0;
+  margin: 0; padding: 0;
   color: #080808;
-
-  /* Imagen de fondo */
   background: url('/static/images/background/fondo.jpg') no-repeat center center fixed;
   background-size: cover;
 }
 
-/* Encabezado */
-header {
+/* HEADER: tres zonas */
+.main-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #111;
-  color: #00c8c8;
+  background-color: #2a2b2b;
   padding: 10px 20px;
 }
 
-header .logo {
-  font-size: 28px;
+/* Navegación con iconos más grandes */
+.nav-container {
+  display: flex;
+  gap: 5px;
 }
-
-header nav a {
-  margin: 0 10px;
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-decoration: none;
-  color: #00c8c8;
-  transition: color 0.3s;
+  color: #fdffff;
+  background-color: #222;
+  padding: 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: 1.1rem;
+}
+.nav-icon {
+  width: 90px;
+  height: auto;
+  margin-bottom: 0px;
+  object-fit: contain;
 }
 
-header nav a:hover {
-  color: #ffffff;
+/* Hover colores únicos */
+.nav-home:hover {
+  background-color: #1abc9c;
+  color: #fff;
+}
+.nav-foro:hover {
+  background-color: #e74c3c;
+  color: #fff;
+}
+.nav-inventario:hover {
+  background-color: #3498db;
+  color: #fff;
+}
+
+/* Logo */
+.logo-container img {
+    width: 350px;
+    height: 20;
+     margin-left: -200px;
+
+}
+
+/* Botón Ingresar con relieve */
+.login-button a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #00c8c8;
+  color: #fff;
+  padding: 15px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  transition: background-color 0.3s;
+  font-size: 25px;
+}
+.login-button a:hover {
+  background-color: #2c2c2c;
+}
+.login-button img {
+  width: 40px;
+  height: auto;
+  object-fit: contain;
 }
 
 /* Buscador */
@@ -43,43 +94,73 @@ header nav a:hover {
   justify-content: center;
   margin: 20px;
 }
-
 .search-section input {
-  width: 300px;
-  padding: 10px;
-  font-size: 16px;
+  font-family: 'Chewy';
+  width: 600px; padding: 20px;
+  font-size: 20px;
   border: 2px solid #00c8c8;
   border-radius: 8px 0 0 8px;
   outline: none;
 }
-
 .search-section button {
+  font-family: 'Chewy', cursive;
+  font-size: 25px;
   padding: 10px 15px;
   background-color: #00c8c8;
   border: none;
   color: white;
-  font-weight: bold;
   border-radius: 0 8px 8px 0;
   cursor: pointer;
   transition: background-color 0.3s;
 }
-
 .search-section button:hover {
   background-color: #0099aa;
+}
+
+/* Contenedor oscuro detrás de las cartas */
+.cards-background {
+  background-color: rgba(46, 45, 45, 0.7);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.8);
+  max-width: 1280px;
+  margin: 20px auto;
 }
 
 /* GRID 3×3 fijo */
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3,1fr);
   gap: 20px;
-  padding: 20px;
-  max-width: 1200px;
-  margin: auto;
 }
 
-/* TARJETA DE MORTY UNIFORME */
+/* ---------------------------- */
+/* Contenedor fijo para la imagen */
+/* ---------------------------- */
+.img-container {
+  width: 100%;
+  height: 200px;       /* alto uniforme */
+  overflow: hidden;    
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f2f2f2;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+/* La imagen se escala para caber sin deformarse */
+.img-container img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* ---------------------------- */
+/* TARJETA UNIFORME (sin cambiar) */
+/* ---------------------------- */
 .card {
+  position: relative;
   background-color: #f2f2f2;
   border-radius: 15px;
   overflow: hidden;
@@ -87,98 +168,75 @@ header nav a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
   box-shadow: 2px 4px 10px rgba(0,0,0,0.2);
   transition: transform 0.3s;
 }
-
 .card:hover {
   transform: scale(1.03);
 }
 
-/* IMAGEN: altura fija, mantener proporción y centrar sin recortar */
-.card img {
-  width: auto;               /* que respete la proporción */
-  max-width: 100%;           /* no salga del ancho del contenedor */
-  height: 200px;             /* todas las imágenes tendrán 200px de alto */
-  object-fit: contain;       /* quepan completas dentro del recuadro */
-  object-position: center;   /* centrar tanto horizontal como verticalmente */
-  display: block;
-  margin: 0 auto;            /* centrar en caso de que queden márgenes */
-  background-color: #f2f2f2; /* mismo fondo que la tarjeta */
-}
-
-/* CONTENIDO (nombre y tipo) */
-.card h3,
-.card p {
-  margin: 8px 0;
-  text-align: center;
-  font-size: 1rem;
-  flex: 0 0 auto;
-}
-
-/* Separa el texto del borde superior de la tarjeta */
+/* Asegura que el texto quede centrado */
 .card .card-text {
   margin-top: 12px;
+  text-align: center;
 }
 
-/* Icono junto al tipo */
-.card .type-icon {
-  width: 50px;
-  height: 50px;
-  vertical-align: middle;
-  margin-left: px;
+/* Párrafo “Tipo:” centrado */
+.card-text p {
+  margin: 8px 0;
+  font-size: 1rem;
+  text-align: center;
 }
 
-/* Contenedor oscuro detrás de las cartas */
-.cards-background {
-  background-color: rgba(0, 0, 0, 0.7);  /* negro semi-opaco */
-  padding: 20px;                         /* separa tarjetas del marco */
-  border-radius: 12px;                   /* esquinas suavizadas */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);/* relieve/sombra más intensa */
-  max-width: 1280px;                     /* ajusta al ancho de tu grid */
-  margin: 20px auto;                     /* centra y separa del borde */
+/* ICONO DE TIPO: ahora dentro de .card-text, centrado debajo del texto */
+.card-text img.type-icon {
+  display: block;
+  margin: 8px auto 0;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
 }
-
-/* Si quieres que la paginación quede fuera del fondo, mueve el </div> justo después de la sección .grid */
 /* Paginación */
 .pagination {
   text-align: center;
-  margin: 20px;
+  margin-top: 20px;
 }
-
 .pagination button {
+  font-family: 'Chewy', cursive;
+  font-size: 16px;
   padding: 10px 20px;
   margin: 0 5px;
   background-color: #00c8c8;
   color: white;
   border: none;
-  font-weight: bold;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
-
-/* Color del número de página */
-.pagination #pageInfo {
-  color: #ffffff;      /* o el color que prefieras, p.ej. #00c8c8 */
-  margin: 0 10px;      /* separa un poco de los botones */
-}
-
 .pagination button:hover {
   background-color: #0099aa;
 }
-
-/* Responsive: 2 columnas en tabletas */
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.pagination #pageInfo {
+  color: #fff;  
+  margin: 0 10px;
 }
 
-/* Responsive: 1 columna en móvil */
+/* Responsive */
+@media (max-width:768px) {
+  .grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width:480px) {
+  .grid { grid-template-columns: 1fr; }
+}
+/* Oculta el logo en móvil y hace el botón Ingresar adaptativo */
 @media (max-width: 480px) {
-  .grid {
-    grid-template-columns: 1fr;
+  .logo-container {
+    display: none;
+  }
+  .login-button a {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 0;
+    box-sizing: border-box;
   }
 }

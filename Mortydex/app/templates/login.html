@@ -1,54 +1,52 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login – Mortydex</title>
-  <!-- Fuente Chewy -->
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" 
-    rel="stylesheet"
-  />
-  <!-- Estilos de Login -->
-  <link 
-    rel="stylesheet" 
-    href="{{ url_for('static', filename='css/login.css') }}"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/css/mortydex.css"/>
+  <link rel="stylesheet" href="/static/css/login.css"/>
+  <script defer src="/static/js/login.js"></script>
 </head>
 <body>
   <!-- Header compartido -->
-  <header>
-    <div class="logo">Mortydex</div>
-    <nav>
-      <a href="{{ url_for('index') }}">Home</a>
-      <a href="{{ url_for('hallazgos') }}">Foro</a>
-      <a href="{{ url_for('inventario') }}">Inventario</a>
-      <a href="{{ url_for('login') }}" class="active">Login</a>
-    </nav>
+  <header class="main-header">
+    <div class="nav-container">
+      <a href="/" class="nav-item nav-home">
+        <img src="/static/images/icons/home.png" class="nav-icon"/><span>Home</span>
+      </a>
+      <a href="/hallazgos" class="nav-item nav-foro">
+        <img src="/static/images/icons/foro.png" class="nav-icon"/><span>Foro</span>
+      </a>
+      <a href="/inventario" class="nav-item nav-inventario">
+        <img src="/static/images/icons/inventario.png" class="nav-icon"/><span>Inventario</span>
+      </a>
+    </div>
+    <div class="logo-container">
+      <img src="/static/images/icons/logo.png" alt="Logo"/>
+    </div>
+    <div class="login-button">
+      <a href="/login">
+        <img src="/static/images/icons/Login.png" class="nav-icon"/>
+        Ingresar
+      </a>
+    </div>
   </header>
 
   <main class="login-page">
     <div class="login-card">
       <h2>Iniciar Sesión</h2>
-      <form action="{{ url_for('login') }}" method="post">
-        <input 
-          type="text" 
-          name="username" 
-          placeholder="Usuario" 
-          required
-        />
-        <input 
-          type="password" 
-          name="password" 
-          placeholder="Contraseña" 
-          required
-        />
+      <form id="loginForm">
+        <input type="text" id="username" placeholder="Usuario" required/>
+        <input type="password" id="password" placeholder="Contraseña" required/>
         <button type="submit">Entrar</button>
       </form>
-      <p class="login-links">
-        <a href="#">¿Olvidaste tu contraseña?</a><br />
-        <a href="#">Crear nueva cuenta</a>
-      </p>
+      <!-- Links adicionales -->
+      <div class="aux-links">
+        <a href="/forgot-password">¿Olvidaste tu contraseña?</a>
+        <a href="/register">Create una cuenta</a>
+      </div>
     </div>
   </main>
 </body>

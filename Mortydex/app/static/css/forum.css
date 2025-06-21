@@ -1,131 +1,183 @@
-/* Global */
+/* forum.css */
+
+/* 1) Anula el background global */
 body {
-  font-family: 'Chewy', cursive;
-  background-color: #fff;
-  margin: 0;
-  color: #333;
+  background: none !important;
 }
 
-/* Header */
-header {
+/* 2) Buscador estilo Mortydex */
+.search-section {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #111;
-  color: #00c8c8;
-  padding: 10px 20px;
+  justify-content: center;
+  margin: 20px auto;
+  max-width: 1200px;
 }
-header .logo {
-  font-size: 24px;
+.search-section input,
+.search-section button {
+  font-family: 'Chewy', cursive;
 }
-header nav a {
-  margin-left: 15px;
-  color: #00c8c8;
-  text-decoration: none;
-  transition: color 0.3s;
+
+/* 3) Marco del foro */
+.forum-frame {
+  background-color: #f2f2f2;
+  border-radius: 12px;
+  max-width: 1200px;
+  margin: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  overflow: hidden;
 }
-header nav a.active,
-header nav a:hover {
+
+/* 4) Pestañas */
+.forum-tabs {
+  display: flex;
+}
+.forum-tabs .tab-active,
+.forum-tabs .tab {
+  font-family: 'Chewy', cursive;
+  padding: 10px 16px;
+}
+.forum-tabs .tab-active {
+  background: #888;
   color: #fff;
 }
+.forum-tabs .tab {
+  background: #bbb;
+  color: #333;
+  margin-left: 2px;
+}
 
-/* Layout principal */
+/* 5) Contenido en dos columnas */
 .forum-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
   gap: 20px;
   padding: 20px;
 }
-.posts {
-  flex: 2;
-}
-.login-panel {
-  flex: 1;
-  background: #f2f2f2;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
-}
-.login-panel h3 {
-  margin-top: 0;
-}
-.login-panel input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 2px solid #00c8c8;
-  border-radius: 8px;
-}
-.login-panel button {
-  width: 100%;
-  padding: 10px;
-  background: #00c8c8;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-.login-panel button:hover {
-  background: #0099aa;
-}
 
-/* Tarjeta de post */
+/* 6) Posts */
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 .post-card {
-  background: #f9f9f9;
-  border-radius: 12px;
-  padding: 15px;
-  margin-bottom: 20px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
   box-shadow: 1px 2px 8px rgba(0,0,0,0.1);
 }
 .post-card h2 {
   margin-top: 0;
-}
-.actions {
-  margin: 10px 0;
+  font-family: 'Chewy', cursive;
 }
 .actions button {
-  margin-right: 10px;
+  margin-right: 8px;
   padding: 8px 12px;
-  border: none;
   background: #00c8c8;
   color: #fff;
+  border: none;
   border-radius: 6px;
+  font-family: 'Chewy', cursive;
   cursor: pointer;
   transition: background 0.3s;
 }
 .actions button:hover {
   background: #0099aa;
 }
-
-/* Sección de comentarios */
+/* Comentarios */
 .comments {
-  margin-top: 10px;
+  margin-top: 12px;
   border-top: 1px solid #ccc;
-  padding-top: 10px;
+  padding-top: 12px;
 }
-.comment {
-  margin-bottom: 8px;
+.comments .comment-form input,
+.comments .add-comment-btn {
+  font-family: 'Chewy', cursive;
 }
-.comment-form {
+
+/* 7) Sidebar */
+.forum-sidebar {
   display: flex;
-  gap: 10px;
-  margin-top: 10px;
+  flex-direction: column;
+  gap: 20px;
 }
-.comment-input {
-  flex: 1;
+.sidebar-card {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 1px 2px 8px rgba(0,0,0,0.1);
+}
+.sidebar-card h2 {
+  margin-top: 0;
+  font-family: 'Chewy', cursive;
+}
+.sidebar-card label {
+  font-weight: bold;
+}
+.sidebar-card input {
+  width: 90%;
   padding: 8px;
+  margin: 8px 0;
   border: 2px solid #00c8c8;
   border-radius: 6px;
 }
-.add-comment-btn {
-  padding: 8px 12px;
-  border: none;
+.sidebar-card button {
+  font-family: 'Chewy', cursive;
+  font-size: 16px;
+  padding: 10px;
+  width: 100%;
   background: #00c8c8;
   color: #fff;
+  border: none;
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.3s;
 }
-.add-comment-btn:hover {
+.sidebar-card button:hover {
   background: #0099aa;
 }
+
+/* 8) Actividad reciente */
+.recent-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.recent-list li {
+  padding: 6px 0;
+  border-bottom: 1px solid #ccc;
+  font-family: 'Chewy', cursive;
+}
+.recent-list li:last-child {
+  border-bottom: none;
+}
+
+/* 9) Paginación dentro del marco */
+.forum-pag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 0;
+  background: #ddd;
+}
+.forum-pag button {
+  font-family: 'Chewy', cursive;
+  padding: 10px 20px;
+  margin: 0 8px;
+  background-color: #00c8c8;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.forum-pag button:hover {
+  background-color: #0099aa;
+}
+.forum-pag #forumPageInfo {
+  font-family: 'Chewy', cursive;
+  margin: 0 12px;
+  color: #333;
+}
+
+

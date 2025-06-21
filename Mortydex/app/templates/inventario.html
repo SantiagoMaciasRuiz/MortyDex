@@ -1,50 +1,54 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Inventario – Mortydex</title>
-  <!-- Fuente Chewy -->
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" 
-    rel="stylesheet"
-  />
-  <!-- Estilos de Inventario -->
-  <link 
-    rel="stylesheet" 
-    href="{{ url_for('static', filename='css/inventario.css') }}"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/css/mortydex.css"/>
+  <link rel="stylesheet" href="/static/css/inventario.css"/>
 </head>
 <body>
   <!-- Header compartido -->
-  <header>
-    <div class="logo">Mortydex</div>
-    <nav>
-      <a href="{{ url_for('index') }}">Home</a>
-      <a href="{{ url_for('hallazgos') }}">Foro</a>
-      <a href="{{ url_for('inventario') }}" class="active">Inventario</a>
-      <a href="{{ url_for('login') }}">Login</a>
-    </nav>
+  <header class="main-header">
+    <div class="nav-container">
+      <a href="/" class="nav-item nav-home">
+        <img src="/static/images/icons/home.png" alt="Home" class="nav-icon"/>
+        <span>Home</span>
+      </a>
+      <a href="/hallazgos" class="nav-item nav-foro">
+        <img src="/static/images/icons/foro.png" alt="Foro" class="nav-icon"/>
+        <span>Foro</span>
+      </a>
+      <a href="/inventario" class="nav-item nav-inventario">
+        <img src="/static/images/icons/inventario.png" alt="Inventario" class="nav-icon"/>
+        <span>Inventario</span>
+      </a>
+    </div>
+    <div class="logo-container">
+      <img src="/static/images/icons/logo.png" alt="Rick and Morty Logo"/>
+    </div>
+    <div class="login-button">
+      <a href="/login">
+        <img src="/static/images/icons/Login.png" alt="Ingresar" class="nav-icon"/>
+        Ingresar
+      </a>
+    </div>
   </header>
 
   <main class="inventory-container">
-    <h1>Tu Inventario</h1>
-
+    <h1>Inventario</h1>
     <div class="inventory-grid">
       {% if items %}
         {% for item in items %}
-          <div class="item-card">
-            <!-- Si más adelante tienes URL de imagen, úsala aquí -->
-            <img 
-              src="{{ item.img_url or url_for('static', filename='images/placeholder.png') }}" 
-              alt="{{ item.name }}" 
-            />
-            <h3>{{ item.name }}</h3>
-            <p>Cantidad: {{ item.quantity }}</p>
-          </div>
+        <div class="item-card">
+          <img src="{{ item.img_url or '/static/images/placeholder.png' }}" alt="{{ item.name }}"/>
+          <h3>{{ item.name }}</h3>
+          <p>Cantidad: {{ item.quantity }}</p>
+        </div>
         {% endfor %}
       {% else %}
-        <p class="empty-msg">No tienes items en tu inventario aún.</p>
+        <p>No tienes items en tu inventario aún.</p>
       {% endif %}
     </div>
   </main>
