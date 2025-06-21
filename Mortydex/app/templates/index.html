@@ -19,11 +19,13 @@
   </header>
 
   <main>
-    <section class="search-section">
-      <input type="text" id="searchInput" placeholder="Nombre o Tipo de Morty">
-      <button onclick="filterMortys()">Buscar</button>
-    </section>
-
+  <section class="search-section">
+    <input type="text" id="searchInput" placeholder="Nombre o Tipo de Morty">
+    <button onclick="filterMortys()">Buscar</button>
+  </section>
+  
+  <!-- Contenedor oscuro con relieve -->
+  <div class="cards-background">
     <section class="grid" id="mortyGrid">
       <!-- Mortys serán insertados aquí por JavaScript -->
     </section>
@@ -33,7 +35,9 @@
       <span id="pageInfo"></span>
       <button onclick="nextPage()">Siguiente</button>
     </div>
-  </main>
+  </div>
+</main>
+
 
   <script defer src="{{ url_for('static', filename='js/mortys.js') }}"></script>
 </body>

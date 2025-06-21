@@ -5,7 +5,7 @@ body {
   font-family: 'Chewy', cursive;
   margin: 0;
   padding: 0;
-  color: #333;
+  color: #080808;
 
   /* Imagen de fondo */
   background: url('/static/images/background/fondo.jpg') no-repeat center center fixed;
@@ -130,6 +130,17 @@ header nav a:hover {
   margin-left: px;
 }
 
+/* Contenedor oscuro detrás de las cartas */
+.cards-background {
+  background-color: rgba(0, 0, 0, 0.7);  /* negro semi-opaco */
+  padding: 20px;                         /* separa tarjetas del marco */
+  border-radius: 12px;                   /* esquinas suavizadas */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);/* relieve/sombra más intensa */
+  max-width: 1280px;                     /* ajusta al ancho de tu grid */
+  margin: 20px auto;                     /* centra y separa del borde */
+}
+
+/* Si quieres que la paginación quede fuera del fondo, mueve el </div> justo después de la sección .grid */
 /* Paginación */
 .pagination {
   text-align: center;
@@ -146,6 +157,12 @@ header nav a:hover {
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
+}
+
+/* Color del número de página */
+.pagination #pageInfo {
+  color: #ffffff;      /* o el color que prefieras, p.ej. #00c8c8 */
+  margin: 0 10px;      /* separa un poco de los botones */
 }
 
 .pagination button:hover {
