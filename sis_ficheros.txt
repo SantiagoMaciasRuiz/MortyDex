@@ -1,0 +1,35 @@
+/mortydex
+│
+├── /app/                          # Código principal de la aplicación
+│   ├── __init__.py                # Inicialización de la app
+│   ├── /models/                   # Modelos de la base de datos
+│   │   ├── morty.py               # Modelo Morty
+│   │   ├── hallazgo.py            # Modelo Hallazgo
+│   │   ├── comentario.py          # Modelo Comentario (nuevo)
+│   │   ├── voto.py                # Modelo Voto (nuevo)
+│   │   └── usuario.py             # Modelo Usuario
+│   ├── /routes/                   # Rutas y controladores
+│   │   ├── mortydex.py            # Lógica para la página principal
+│   │   ├── hallazgos.py           # Lógica para los descubrimientos y actividad reciente
+│   │   ├── inventario.py          # Lógica para el inventario de los usuarios
+│   │   └── auth.py                # Lógica de autenticación
+│   ├── /templates/                # Plantillas HTML
+│   │   ├── index.html             # Página principal con el filtro de Mortys y el pop-up de login
+│   │   ├── hallazgos.html         # Página del foro con actividad reciente
+│   │   ├── inventario.html        # Página de inventario
+│   │   └── login.html             # Modal de login
+│   ├── /static/                   # Archivos estáticos (CSS, JS, imágenes)
+│   │   ├── /css/                  # Estilos CSS
+│   │   │   └── style.css          # Estilos principales
+│   │   ├── /js/                   # Scripts JS
+│   │   │   └── script.js          # Lógica JS para el login y otras interacciones
+│   │   └── /images/               # Imágenes de los Mortys
+│   └── /utils/                    # Funciones auxiliares
+│       ├── mortys_api.py          # Scraping de Mortys
+│       └── auth_utils.py          # Funciones de autenticación
+│
+├─ /migrations/                   # Archivos de migración
+├── requirements.txt               # Dependencias de Python
+├── config.py                      # Configuraciones del proyecto
+└── run.py                         # Inicialización de la aplicación
+─
