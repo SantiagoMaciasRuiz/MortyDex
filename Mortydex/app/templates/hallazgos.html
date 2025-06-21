@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hallazgos – Mortydex</title>
+  <!-- Fuente Chewy -->
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+  <!-- Estilos del foro -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/forum.css') }}">
+</head>
+<body>
+  <header>
+    <div class="logo">Mortydex Foro</div>
+    <nav>
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('hallazgos') }}" class="active">Foro</a>
+      <a href="{{ url_for('inventario') }}">Inventario</a>
+      <a href="{{ url_for('login') }}">Login</a>
+    </nav>
+  </header>
+
+  <main class="forum-container">
+    <!-- Sección de publicaciones -->
+    <section class="posts">
+      {% for post in posts %}
+      <div class="post-card" data-id="{{ post.id }}">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.content }}</p>
+        <div class="actions">
+          <button class="seen-btn">Visto (<span class="seen-count">{{ post.seen_count }}</span>)</button>
+          <button class="comment-toggle">Comentarios ({{ post.comments|length }})</button>
+        </div>
+        <div class="comments" style="display: none;">
+          {% for comment in post.comments %}
+          <div class="comment">
+            <strong>{{ comment.user }}:</strong> {{ comment.text }}
+          </div>
+          {% endfor %}
+          <div class="comment-form">
+            <input type="text" class="comment-input" placeholder="Escribe un comentario...">
+            <button class="add-comment-btn">Agregar</button>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </section>
+
+    <!-- Panel de login -->
+    <aside class="login-panel">
+      <h3>Iniciar sesión</h3>
+      <form action="{{ url_for('login') }}" method="post">
+        <input type="text" name="username" placeholder="Usuario" required>
+        <input type="password" name="password" placeholder="Contraseña" required>
+        <button type="submit">Entrar</button>
+      </form>
+    </aside>
+  </main>
+
+  <!-- Script del foro -->
+  <script defer src="{{ url_for('static', filename='js/forum.js') }}"></script>
+</body>
+</html>

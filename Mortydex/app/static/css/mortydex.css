@@ -1,0 +1,120 @@
+
+
+/* Fuente Rick & Morty */
+body {
+  font-family: 'Chewy', cursive;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* Encabezado */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #111;
+  color: #00c8c8;
+  padding: 10px 20px;
+}
+
+header .logo {
+  font-size: 28px;
+}
+
+header nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #00c8c8;
+  transition: color 0.3s;
+}
+
+header nav a:hover {
+  color: #ffffff;
+}
+
+/* Buscador */
+.search-section {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.search-section input {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #00c8c8;
+  border-radius: 8px 0 0 8px;
+  outline: none;
+}
+
+.search-section button {
+  padding: 10px 15px;
+  background-color: #00c8c8;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-section button:hover {
+  background-color: #0099aa;
+}
+
+/* Grid de Mortys */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.card {
+  background-color: #f2f2f2;
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.2);
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.card h3 {
+  margin: 10px 0;
+}
+
+/* Paginación */
+.pagination {
+  text-align: center;
+  margin: 20px;
+}
+
+.pagination button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  background-color: #00c8c8;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+  background-color: #0099aa;
+}

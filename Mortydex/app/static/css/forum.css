@@ -1,0 +1,131 @@
+/* Global */
+body {
+  font-family: 'Chewy', cursive;
+  background-color: #fff;
+  margin: 0;
+  color: #333;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #111;
+  color: #00c8c8;
+  padding: 10px 20px;
+}
+header .logo {
+  font-size: 24px;
+}
+header nav a {
+  margin-left: 15px;
+  color: #00c8c8;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+header nav a.active,
+header nav a:hover {
+  color: #fff;
+}
+
+/* Layout principal */
+.forum-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+.posts {
+  flex: 2;
+}
+.login-panel {
+  flex: 1;
+  background: #f2f2f2;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+}
+.login-panel h3 {
+  margin-top: 0;
+}
+.login-panel input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #00c8c8;
+  border-radius: 8px;
+}
+.login-panel button {
+  width: 100%;
+  padding: 10px;
+  background: #00c8c8;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.login-panel button:hover {
+  background: #0099aa;
+}
+
+/* Tarjeta de post */
+.post-card {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 1px 2px 8px rgba(0,0,0,0.1);
+}
+.post-card h2 {
+  margin-top: 0;
+}
+.actions {
+  margin: 10px 0;
+}
+.actions button {
+  margin-right: 10px;
+  padding: 8px 12px;
+  border: none;
+  background: #00c8c8;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.actions button:hover {
+  background: #0099aa;
+}
+
+/* Sección de comentarios */
+.comments {
+  margin-top: 10px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+.comment {
+  margin-bottom: 8px;
+}
+.comment-form {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.comment-input {
+  flex: 1;
+  padding: 8px;
+  border: 2px solid #00c8c8;
+  border-radius: 6px;
+}
+.add-comment-btn {
+  padding: 8px 12px;
+  border: none;
+  background: #00c8c8;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.add-comment-btn:hover {
+  background: #0099aa;
+}
