@@ -180,4 +180,10 @@ body {
   color: #333;
 }
 
+.nav-foro.active,
+.nav-foro.active:hover {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
 

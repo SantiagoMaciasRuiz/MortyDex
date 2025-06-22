@@ -103,3 +103,9 @@
   font-size: 0.9rem;
   color: #555;
 }
+
+.nav-inventario.active,
+.nav-inventario.active:hover {
+  background-color: #3498db;
+  color: #fff;
+}

@@ -5,19 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hallazgos – Mortydex</title>
   <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet"/>
-  <!-- CSS global y luego CSS del foro -->
-  <link rel="stylesheet" href="/static/css/mortydex.css"/>
-  <link rel="stylesheet" href="/static/css/forum.css"/>
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/icons/favicon.png') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/mortydex.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/forum.css') }}"/>
 </head>
 <body>
-  <!-- HEADER compartido -->
+  <!-- HEADER compartido (sin login-button) -->
   <header class="main-header">
     <div class="nav-container">
       <a href="/" class="nav-item nav-home">
         <img src="/static/images/icons/home.png" class="nav-icon"/><span>Home</span>
       </a>
-      <a href="/hallazgos" class="nav-item nav-foro">
+      <a href="/hallazgos" class="nav-item nav-foro active">
         <img src="/static/images/icons/foro.png" class="nav-icon"/><span>Foro</span>
       </a>
       <a href="/inventario" class="nav-item nav-inventario">
@@ -26,12 +24,6 @@
     </div>
     <div class="logo-container">
       <img src="/static/images/icons/logo.png" alt="Logo"/>
-    </div>
-    <div class="login-button">
-      <a href="/login">
-        <img src="/static/images/icons/Login.png" class="nav-icon"/>
-        Ingresar
-      </a>
     </div>
   </header>
 
