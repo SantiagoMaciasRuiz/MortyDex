@@ -1,6 +1,6 @@
 # Mortydex
 
-**Mortydex** es una aplicación web desarrollada con Flask que permite interactuar con una base de datos de personajes, episodios y otras características del universo de _Rick and Morty_. Este proyecto tiene como objetivo proporcionar una plataforma fácil de usar para consultar la información sobre los personajes y episodios de la famosa serie de animación.
+**Mortydex** es una aplicación web desarrollada con Flask que permite interactuar con una base de datos de personajes, episodios y otras características del universo de _Rick and Morty_. Este proyecto tiene como objetivo proporcionar una plataforma fácil de usar para consultar la información sobre los diferentes tipos de portys y sus afinaciones.
 
 ## Integrantes del Equipo
 
