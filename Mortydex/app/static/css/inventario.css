@@ -1,6 +1,11 @@
 /* inventario.css */
 
-/* Fondo claro con relieve (reutilizable) */
+/* 0) Eliminar fondo global y aplicar blanco */
+body {
+  background: none !important;
+}
+
+/* 1) Fondo claro con relieve */
 .cards-background {
   background-color: #ffffff;
   border-radius: 12px;
@@ -14,7 +19,7 @@
   font-family: 'Chewy', cursive;
 }
 
-/* Simulación de perfil logueado */
+/* 2) Simulación de perfil logueado */
 .user-profile {
   display: flex;
   align-items: center;
@@ -33,7 +38,7 @@
   object-fit: contain;
 }
 
-/* Sección de subida */
+/* 3) Sección de subida */
 .upload-section {
   display: flex;
   flex-wrap: wrap;
@@ -74,7 +79,7 @@
   background: #0099aa;
 }
 
-/* Grid de items */
+/* 4) Grid de items */
 .inventory-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
