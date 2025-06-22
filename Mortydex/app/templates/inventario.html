@@ -1,56 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inventario – Mortydex</title>
-  <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/static/css/mortydex.css"/>
-  <link rel="stylesheet" href="/static/css/inventario.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/mortydex.css">
+  <link rel="stylesheet" href="/static/css/inventario.css">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/icons/favicon.png') }}"/>
 </head>
 <body>
-  <!-- Header compartido -->
+  <!-- Header común -->
   <header class="main-header">
     <div class="nav-container">
       <a href="/" class="nav-item nav-home">
-        <img src="/static/images/icons/home.png" alt="Home" class="nav-icon"/>
-        <span>Home</span>
+        <img src="/static/images/icons/home.png" class="nav-icon"><span>Home</span>
       </a>
       <a href="/hallazgos" class="nav-item nav-foro">
-        <img src="/static/images/icons/foro.png" alt="Foro" class="nav-icon"/>
-        <span>Foro</span>
+        <img src="/static/images/icons/foro.png" class="nav-icon"><span>Foro</span>
       </a>
       <a href="/inventario" class="nav-item nav-inventario">
-        <img src="/static/images/icons/inventario.png" alt="Inventario" class="nav-icon"/>
-        <span>Inventario</span>
+        <img src="/static/images/icons/inventario.png" class="nav-icon"><span>Inventario</span>
       </a>
     </div>
     <div class="logo-container">
-      <img src="/static/images/icons/logo.png" alt="Rick and Morty Logo"/>
+      <img src="/static/images/icons/logo.png" alt="Logo">
     </div>
     <div class="login-button">
-      <a href="/login">
-        <img src="/static/images/icons/Login.png" alt="Ingresar" class="nav-icon"/>
-        Ingresar
-      </a>
+      <a href="/login"><img src="/static/images/icons/Login.png" class="nav-icon">Ingresar</a>
     </div>
   </header>
 
-  <main class="inventory-container">
-    <h1>Inventario</h1>
-    <div class="inventory-grid">
-      {% if items %}
-        {% for item in items %}
-        <div class="item-card">
-          <img src="{{ item.img_url or '/static/images/placeholder.png' }}" alt="{{ item.name }}"/>
-          <h3>{{ item.name }}</h3>
-          <p>Cantidad: {{ item.quantity }}</p>
-        </div>
-        {% endfor %}
-      {% else %}
-        <p>No tienes items en tu inventario aún.</p>
-      {% endif %}
+  <main class="inventory-page">
+    <!-- Fondo claro con relieve -->
+    <div class="cards-background">
+
+      <!-- Sección de subida -->
+      <section class="upload-section">
+        <h2>Subir Morty</h2>
+        <input type="file" id="mortyImage" accept="image/*">
+        <input type="text" id="mortyName" placeholder="Nombre del Morty">
+        <input type="text" id="mortyType" placeholder="Tipo de Morty">
+        <button id="uploadBtn">Subir</button>
+      </section>
+
+      <!-- Grid de inventario -->
+      <section class="inventory-grid" id="inventoryGrid">
+        <!-- Items iniciales y subidos aparecerán aquí -->
+      </section>
+
     </div>
   </main>
+
+  <script defer src="/static/js/inventario.js"></script>
 </body>
 </html>
