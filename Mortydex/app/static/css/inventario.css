@@ -14,6 +14,25 @@
   font-family: 'Chewy', cursive;
 }
 
+/* Simulación de perfil logueado */
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #222;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #00c8c8;
+}
+.user-profile span {
+  font-family: 'Chewy', cursive;
+}
+.user-profile .nav-icon {
+  width: 28px;
+  height: auto;
+  object-fit: contain;
+}
+
 /* Sección de subida */
 .upload-section {
   display: flex;

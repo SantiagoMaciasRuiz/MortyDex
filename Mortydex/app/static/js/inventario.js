@@ -1,4 +1,4 @@
-// inventario.js
+// inventario.js (sin cambios)
 
 // Items de demo iniciales
 const inventory = [
@@ -42,7 +42,6 @@ document.getElementById('uploadBtn').addEventListener('click', () => {
       img: e.target.result
     });
     renderInventory();
-    // reset
     fileInput.value = '';
     nameInput.value = '';
     typeInput.value = '';

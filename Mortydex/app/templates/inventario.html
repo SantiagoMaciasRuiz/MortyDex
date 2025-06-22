@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/mortydex.css">
   <link rel="stylesheet" href="/static/css/inventario.css">
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/icons/favicon.png') }}"/>
 </head>
 <body>
   <!-- Header común -->
@@ -26,8 +25,10 @@
     <div class="logo-container">
       <img src="/static/images/icons/logo.png" alt="Logo">
     </div>
-    <div class="login-button">
-      <a href="/login"><img src="/static/images/icons/Login.png" class="nav-icon">Ingresar</a>
+    <!-- Simulación de usuario logueado -->
+    <div class="user-profile">
+      <img src="/static/images/icons/user-circle.png" class="nav-icon" alt="Usuario">
+      <span>JulianOM</span>
     </div>
   </header>
 
@@ -45,9 +46,7 @@
       </section>
 
       <!-- Grid de inventario -->
-      <section class="inventory-grid" id="inventoryGrid">
-        <!-- Items iniciales y subidos aparecerán aquí -->
-      </section>
+      <section class="inventory-grid" id="inventoryGrid"></section>
 
     </div>
   </main>
