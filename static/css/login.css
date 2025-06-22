@@ -1,0 +1,78 @@
+/* login.css – estilos de la página de login */
+
+/* 1) Anula el background global */
+body {
+  background: none !important;
+}
+
+/* 2) Centrado vertical y horizontal */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 80px);
+}
+
+/* 3) Tarjeta */
+.login-card {
+  background: #f2f2f2;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 360px;
+}
+.login-card h2 {
+  margin-bottom: 20px;
+  font-family: 'Chewy', cursive;
+}
+
+/* 4) Formulario */
+.login-card form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+.login-card input {
+  width: 80%;
+  padding: 12px;
+  border: 2px solid #00c8c8;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: 'Chewy', cursive;
+}
+.login-card button {
+  font-family: 'Chewy', cursive;
+  padding: 12px 20px;
+  background: #00c8c8;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.login-card button:hover {
+  background: #0099aa;
+}
+
+/* 5) Enlaces auxiliares */
+.aux-links {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.aux-links a {
+  font-family: 'Chewy', cursive;
+  color: #00c8c8;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.aux-links a:hover {
+  color: #0099aa;
+}
+
+
