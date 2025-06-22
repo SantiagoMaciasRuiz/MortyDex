@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mortydex</title>
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/css/mortydex.css"/>
+</head>
+<body>
+  <!-- HEADER PERSONALIZADO -->
+  <header class="main-header">
+    <!-- Navegación con iconos -->
+    <div class="nav-container">
+      <a href="/" class="nav-item nav-home">
+        <img src="/static/images/icons/home.png" alt="Home" class="nav-icon"/>
+        <span>Home</span>
+      </a>
+      <a href="/hallazgos" class="nav-item nav-foro">
+        <img src="/static/images/icons/foro.png" alt="Foro" class="nav-icon"/>
+        <span>Foro</span>
+      </a>
+      <a href="/inventario" class="nav-item nav-inventario">
+        <img src="/static/images/icons/inventario.png" alt="Inventario" class="nav-icon"/>
+        <span>Inventario</span>
+      </a>
+    </div>
+
+    <!-- Logo Rick and Morty -->
+    <div class="logo-container">
+      <img src="/static/images/icons/logo.png" alt="Rick and Morty Logo"/>
+    </div>
+
+    <!-- Botón Ingresar -->
+    <div class="login-button">
+      <a href="/login">
+        <img src="/static/images/icons/Login.png" alt="Ingresar" class="nav-icon"/>
+        Ingresar
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="search-section">
+      <input type="text" id="searchInput" placeholder="Nombre o Tipo de Morty"/>
+      <button onclick="filterMortys()">Buscar</button>
+    </section>
+
+    <!-- Contenedor oscuro con relieve -->
+    <div class="cards-background">
+      <section class="grid" id="mortyGrid"></section>
+      <div class="pagination">
+        <button onclick="prevPage()">Anterior</button>
+        <span id="pageInfo"></span>
+        <button onclick="nextPage()">Siguiente</button>
+      </div>
+    </div>
+  </main>
+
+  <script defer src="/static/js/mortys.js"></script>
+</body>
+</html>
