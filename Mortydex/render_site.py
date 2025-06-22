@@ -1,5 +1,6 @@
 from jinja2 import Environment, FileSystemLoader
 import os
+import shutil
 
 # Directorio donde están las plantillas
 template_dir = 'Mortydex/app/templates'
@@ -25,3 +26,12 @@ os.makedirs('docs', exist_ok=True)
 # Guardar el HTML renderizado en la carpeta 'docs'
 with open('docs/index.html', 'w', encoding='utf-8') as f:
     f.write(rendered_html)
+
+# Copiar archivos estáticos a docs/
+static_src = 'Mortydex/app/static'
+static_dst = 'docs/static'
+
+if os.path.exists(static_dst):
+    shutil.rmtree(static_dst)
+
+shutil.copytree(static_src, static_dst)
