@@ -25,10 +25,10 @@ jobs:
 
 
       - name: Render sitio con Jinja2
-        run: python render_site.py
+        run: python Mortydex/render_site.py
 
       - name: Deploy a GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: ./docs
