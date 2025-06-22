@@ -2,9 +2,9 @@
 
 // Items de demo iniciales
 const inventory = [
-  { id: 1, name: 'Morty Conejo', type: 'Papel', img: '/static/images/mortys/pm-015.jpg' },
+  { id: 1, name: 'Morty Mutado', type: 'Papel', img: '/static/images/mortys/pm-015.jpg' },
   { id: 2, name: 'Morty Gato', type: 'Tijera', img: '/static/images/mortys/pm-052.jpg' },
-  { id: 3, name: 'Morty Ninja', type: 'Piedra', img: '/static/images/mortys/pm-085.jpg' }
+  { id: 3, name: 'Morty Mermelada', type: 'Tijera', img: '/static/images/mortys/pm-118.png' }
 ];
 
 const grid = document.getElementById('inventoryGrid');
