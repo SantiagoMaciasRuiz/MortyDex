@@ -186,4 +186,9 @@ body {
   color: #fff;
 }
 
-
+/* Ocultar logo en dispositivos móviles */
+@media (max-width: 768px) {
+  .logo-container {
+    display: none;
+  }
+}

@@ -240,6 +240,12 @@ body {
     box-sizing: border-box;
   }
 }
+/* Ocultar logo en dispositivos móviles */
+@media (max-width: 768px) {
+  .logo-container {
+    display: none;
+  }
+}
 
 /* Aplica el mismo estilo al item activo */
 .nav-home.active,
