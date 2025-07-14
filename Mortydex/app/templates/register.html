@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login – Mortydex</title>
+  <title>Registro – Mortydex</title>
   <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/static/css/mortydex.css"/>
   <link rel="stylesheet" href="/static/css/login.css"/>
@@ -27,25 +27,16 @@
       <img src="/static/images/icons/logo.png" alt="Logo"/>
     </div>
     <div class="login-button">
-  {% if session.username %}
-    <span>¡Hola, {{ session.username }}!</span>
-    <a href="/logout">
-      <img src="/static/images/icons/Login.png" alt="Salir" class="nav-icon"/>
-      Salir
-    </a>
-  {% else %}
-    <a href="/login">
-      <img src="/static/images/icons/Login.png" alt="Ingresar" class="nav-icon"/>
-      Ingresar
-    </a>
-  {% endif %}
-  </div>
-
+      <a href="/login">
+        <img src="/static/images/icons/Login.png" class="nav-icon"/>
+        Ingresar
+      </a>
+    </div>
   </header>
 
   <main class="login-page">
     <div class="login-card">
-      <h2>Iniciar Sesión</h2>
+      <h2>Crear Cuenta</h2>
       
       <!-- Mostrar mensajes de error/éxito -->
       {% with messages = get_flashed_messages(with_categories=true) %}
@@ -56,17 +47,18 @@
         {% endif %}
       {% endwith %}
       
-      <!-- Formulario que envía a Python -->
-      <form method="POST" action="/login">
-        <input type="text" name="username" placeholder="Usuario" required/>
+      <!-- Formulario de registro -->
+      <form method="POST" action="/register">
+        <input type="text" name="username" placeholder="Nombre de usuario" required/>
+        <input type="email" name="email" placeholder="Email" required/>
         <input type="password" name="password" placeholder="Contraseña" required/>
-        <button type="submit">Entrar</button>
+        <input type="password" name="confirm_password" placeholder="Confirmar contraseña" required/>
+        <button type="submit">Registrarse</button>
       </form>
       
       <!-- Links adicionales -->
       <div class="aux-links">
-        <a href="/forgot-password">¿Olvidaste tu contraseña?</a>
-        <a href="/register">Crea una cuenta</a>
+        <a href="/login">¿Ya tienes cuenta? Inicia sesión</a>
       </div>
     </div>
   </main>

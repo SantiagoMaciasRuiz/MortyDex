@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/static/css/mortydex.css"/>
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/icons/favicon.png') }}"/>
-
 </head>
 <body>
   <!-- HEADER PERSONALIZADO -->
@@ -33,16 +32,33 @@
       <img src="/static/images/icons/logo.png" alt="Rick and Morty Logo"/>
     </div>
 
-    <!-- Botón Ingresar -->
+    <!-- Botón Ingresar o Usuario logueado -->
     <div class="login-button">
-      <a href="/login">
-        <img src="/static/images/icons/Login.png" alt="Ingresar" class="nav-icon"/>
-        Ingresar
-      </a>
+      {% if session.username %}
+        <span>¡Hola, {{ session.username }}!</span>
+        <a href="/logout">
+          <img src="/static/images/icons/Login.png" alt="Salir" class="nav-icon"/>
+          Salir
+        </a>
+      {% else %}
+        <a href="/login">
+          <img src="/static/images/icons/Login.png" alt="Ingresar" class="nav-icon"/>
+          Ingresar
+        </a>
+      {% endif %}
     </div>
   </header>
 
   <main>
+    <!-- Mostrar mensajes de éxito/error -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
     <section class="search-section">
       <input type="text" id="searchInput" placeholder="Nombre o Tipo de Morty"/>
       <button onclick="filterMortys()">Buscar</button>

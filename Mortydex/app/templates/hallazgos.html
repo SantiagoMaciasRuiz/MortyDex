@@ -28,11 +28,20 @@
       <img src="/static/images/icons/logo.png" alt="Logo"/>
     </div>
     <div class="login-button">
-      <a href="/login">
-        <img src="/static/images/icons/Login.png" class="nav-icon"/>
-        Ingresar
-      </a>
-    </div>
+  {% if session.username %}
+    <span>¡Hola, {{ session.username }}!</span>
+    <a href="/logout">
+      <img src="/static/images/icons/Login.png" alt="Salir" class="nav-icon"/>
+      Salir
+    </a>
+  {% else %}
+    <a href="/login">
+      <img src="/static/images/icons/Login.png" alt="Ingresar" class="nav-icon"/>
+      Ingresar
+    </a>
+  {% endif %}
+  </div>
+
   </header>
 
   <main>
@@ -58,23 +67,26 @@
         </section>
 
         <!-- DERECHA: sidebar -->
-        <aside class="forum-sidebar">
-          <div class="sidebar-card">
-            <h2>User Login</h2>
-            <form action="/login" method="post">
-              <label>Username</label>
-              <input type="text" name="username" required/>
-              <label>Password</label>
-              <input type="password" name="password" required/>
-              <button type="submit">Log in</button>
-            </form>
-          </div>
-          <div class="sidebar-card">
-            <h2>Actividad reciente</h2>
-            <ul id="recentActivity" class="recent-list"></ul>
-          </div>
-        </aside>
-      </div>
+        <div class="sidebar-card">
+  {% if session.username %}
+    <h2>Tu perfil</h2>
+    <div class="user-profile-card">
+      <img src="/static/images/mortys/avatar_morty.png" alt="Avatar de Morty" class="user-avatar"/>
+      <p><strong>{{ session.username }}</strong></p>
+      <p>Morty coleccionista 🧪</p>
+      <a href="/logout" class="logout-button">Cerrar sesión</a>
+    </div>
+  {% else %}
+    <h2>Iniciar Sesión</h2>
+    <form action="/login" method="post">
+      <label>Usuario</label>
+      <input type="text" name="username" required/>
+      <label>Contraseña</label>
+      <input type="password" name="password" required/>
+      <button type="submit">Entrar</button>
+    </form>
+  {% endif %}
+  </div>
 
       <!-- 2.3) Paginación -->
       <div class="pagination forum-pag">

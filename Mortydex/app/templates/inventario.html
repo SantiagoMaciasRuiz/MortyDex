@@ -26,9 +26,21 @@
     <div class="logo-container">
       <img src="/static/images/icons/logo.png" alt="Logo">
     </div>
-    <div class="login-button">
-      <a href="/login"><img src="/static/images/icons/Login.png" class="nav-icon">Ingresar</a>
-    </div>
+   <div class="login-button">
+  {% if session.username %}
+    <span>¡Hola, {{ session.username }}!</span>
+    <a href="/logout">
+      <img src="/static/images/icons/Login.png" alt="Salir" class="nav-icon"/>
+      Salir
+    </a>
+  {% else %}
+    <a href="/login">
+      <img src="/static/images/icons/Login.png" alt="Ingresar" class="nav-icon"/>
+      Ingresar
+    </a>
+  {% endif %}
+  </div>
+
   </header>
 
   <main class="inventory-page">
