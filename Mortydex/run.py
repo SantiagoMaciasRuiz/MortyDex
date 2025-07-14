@@ -7,6 +7,7 @@ import os
 from dotenv import load_dotenv
 from functools import wraps
 from flask import jsonify
+from random import choice
 # Cargar variables de entorno
 load_dotenv()
 
@@ -185,6 +186,27 @@ def inventario():
     
     return render_template('inventario.html', items=items)
 
+# API para obtener posts (usado por JavaScript)
+@app.route('/api/posts')
+def api_posts():
+    posts_cursor = posts_collection.find().sort('created_at', -1)
+    posts = []
+
+    for post in posts_cursor:
+        posts.append({
+            'id': str(post['_id']),
+            'title': post.get('title', ''),
+            'content': post.get('content', ''),
+            'author': post.get('author', 'Anónimo'),
+            'seen_count': post.get('seen_count', 0),
+            'comments': post.get('comments', []),
+            'morty_img': post.get('morty_img', '/static/images/mortys/avatar_morty.png'),
+            'morty_type': post.get('morty_type', 'Desconocido')
+        })
+
+    return jsonify(posts)
+
+
 # Página de login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -254,13 +276,18 @@ def logout():
     return redirect(url_for('index'))
 
 # Ruta para crear posts (ejemplo)
+
+
 @app.route('/crear_post', methods=['POST'])
 @login_required
 def crear_post():
     title = request.form.get('title')
     content = request.form.get('content')
-    
+
     if title and content:
+        # 👉 Elegir un Morty aleatorio
+        morty = db.mortys.aggregate([{'$sample': {'size': 1}}]).next()
+
         post_data = {
             'title': title,
             'content': content,
@@ -268,13 +295,18 @@ def crear_post():
             'user_id': session.get('user_id'),
             'seen_count': 0,
             'comments': [],
-            'created_at': datetime.utcnow()
+            'created_at': datetime.utcnow(),
+            #  Agregar imagen y tipo del Morty
+            'morty_name': morty.get('name'),
+            'morty_type': morty.get('type'),
+            'morty_img': morty.get('img')
         }
-        
+
         posts_collection.insert_one(post_data)
         flash('Post creado exitosamente', 'success')
-    
+
     return redirect(url_for('hallazgos'))
+
 
 # API endpoints para uso con JavaScript  
 @app.route('/api/login', methods=['POST'])

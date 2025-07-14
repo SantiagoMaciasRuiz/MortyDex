@@ -1,30 +1,13 @@
-// forum.js
-
-// Tus datos de ejemplo:
-const posts = [
-  {
-    id: 1,
-    title: 'Han visto el morty Guineo?',
-    content: 'Estaba relajadito en Urabá y me encontré este care banano, no sé si alguien más lo habrá visto pero que hpta tiradero de caja',
-    seen_count: 5,
-    comments: [
-      { user: 'Rick', text: 'Qué chimba!' },
-      { user: 'Summer', text: '¡Yo también lo vi!' }
-    ]
-  },
-  {
-    id: 2,
-    title: 'Morty Vampiro avistado',
-    content: 'Un Morty Vampiro apareció en el cementerio de Itagüí, ¡cuidado con los colmillos!',
-    seen_count: 3,
-    comments: [
-      { user: 'Beth', text: '¡Cuidado con esos colmillos!' }
-    ]
-  }
-];
-
+let posts = [];
 let currentPage = 1;
 const itemsPerPage = 5;
+
+async function fetchPosts() {
+  const res = await fetch('/api/posts');
+  const data = await res.json();
+  posts = data;
+  renderPosts();
+}
 
 function renderPosts(list = posts) {
   const container = document.getElementById('postsContainer');
@@ -38,6 +21,8 @@ function renderPosts(list = posts) {
     card.className = 'post-card';
     card.innerHTML = `
       <h2>${post.title}</h2>
+      <img src="${post.morty_img}" alt="Morty" class="morty-img" />
+      <p class="morty-type">Tipo: ${post.morty_type}</p>
       <p>${post.content}</p>
       <div class="actions">
         <button class="seen-btn">Visto (<span>${post.seen_count}</span>)</button>
@@ -51,7 +36,7 @@ function renderPosts(list = posts) {
         </div>
       </div>
     `;
-    container.appendChild(card);
+    container.appendChild(card);  //  Agregado correctamente
   });
 
   document.getElementById('forumPageInfo').textContent =
@@ -93,6 +78,7 @@ function prevPage() {
     renderPosts();
   }
 }
+
 function nextPage() {
   if (currentPage * itemsPerPage < posts.length) {
     currentPage++;
@@ -110,7 +96,7 @@ function filterPosts() {
   renderPosts(filtered);
 }
 
+//  Solo una vez, al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
-  renderPosts();
+  fetchPosts();
 });
-
