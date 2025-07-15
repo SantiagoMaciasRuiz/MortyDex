@@ -1,0 +1,18 @@
+[
+  {
+    "_id": {
+      "$oid": "6875683a2aa642a546478b44"
+    },
+    "username": "Maciasadmin",
+    "email": "santimaciasruiz@hotmail.com",
+    "password_hash": "scrypt:32768:8:1$5t18nGFHksMppZER$996e0b6c43e14ad87aca385d8af891c0ac459a6c4e4ac481a15e5eb27679943d2f9386c09225c8ffa8d5576cc22785a3eecad8ac18842d1464d92e5d1dafde42"
+  },
+  {
+    "_id": {
+      "$oid": "68756fe21bd6394a88985ce4"
+    },
+    "username": "felo",
+    "email": "felo@gmail.com",
+    "password_hash": "scrypt:32768:8:1$i1snm5dijfQMBVk0$5b35822cf031a7b96d9ea68c20c82c3f23cb9514fb9b03a2d7e326c5d9c6086930944fb21f2178834e0f405756d129fc90461f5926de029e5e21747d265d4b00"
+  }
+]

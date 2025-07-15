@@ -1,0 +1,46 @@
+[
+  {
+    "_id": {
+      "$oid": "68757bf15c169ebf609ddae4"
+    },
+    "title": "Han visto el morty Guineo?",
+    "content": "Estaba relajadito en Urabá y me encontré este care banano, no sé si alguien más lo habrá visto pero que hpta tiradero de caja",
+    "author": "Rick",
+    "seen_count": 5,
+    "comments": [
+      {
+        "user": "Rick",
+        "text": "Qué chimba!"
+      },
+      {
+        "user": "Summer",
+        "text": "¡Yo también lo vi!"
+      }
+    ],
+    "morty_img": "/static/images/mortys/morty_guineo.png",
+    "morty_type": "Plátano",
+    "created_at": {
+      "$date": "2025-07-14T21:51:45.491Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "68757bf15c169ebf609ddae5"
+    },
+    "title": "Morty Vampiro avistado",
+    "content": "Un Morty Vampiro apareció en el cementerio de Itagüí, ¡cuidado con los colmillos!",
+    "author": "Beth",
+    "seen_count": 3,
+    "comments": [
+      {
+        "user": "Beth",
+        "text": "¡Cuidado con esos colmillos!"
+      }
+    ],
+    "morty_img": "/static/images/mortys/vampire_morty.png",
+    "morty_type": "Oscuro",
+    "created_at": {
+      "$date": "2025-07-14T21:51:45.491Z"
+    }
+  }
+]
