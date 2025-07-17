@@ -1,61 +1,70 @@
 # Mortydex
 
-**Mortydex** es una aplicación web desarrollada con Flask que permite interactuar con una base de datos de personajes, episodios y otras características del universo de _Rick and Morty_. Este proyecto tiene como objetivo proporcionar una plataforma fácil de usar para consultar la información sobre los personajes y episodios de la famosa serie de animación.
+**Mortydex** es una aplicación web desarrollada con **Flask** que permite interactuar con una base de datos de personajes, episodios y objetos inspirados en el universo de _Rick and Morty_. El objetivo es crear una plataforma que simule una especie de "Pokédex" del multiverso de Mortys, con un sistema de usuarios, posts y colecciones personalizadas.
 
-## Integrantes del Equipo
+---
 
-El equipo de desarrollo está compuesto por los siguientes miembros:
+##  Equipo de Desarrollo
 
-- **Juan Camilo Valencia Garcia** [jcvalenciaga@unal.edu.co](mailto:jcvalenciaga@unal.edu.co)
-- **Santiago Macias Ruiz** [smaciasr@unal.edu.co](mailto:smaciasr@unal.edu.co)
-- **Julian Orrego Martinez** [jorrego@unal.edu.co](mailto:jorrego@unal.edu.co)
-- **Juan Felipe Lopez Ramirez** [jualopezra@unal.edu.co](mailto:jualopezra@unal.edu.co)
+- **Juan Camilo Valencia Garcia** – [jcvalenciaga@unal.edu.co](mailto:jcvalenciaga@unal.edu.co)  
+- **Santiago Macias Ruiz** – [smaciasr@unal.edu.co](mailto:smaciasr@unal.edu.co)  
+- **Julian Orrego Martinez** – [jorrego@unal.edu.co](mailto:jorrego@unal.edu.co)  
+- **Juan Felipe Lopez Ramirez** – [jualopezra@unal.edu.co](mailto:jualopezra@unal.edu.co)  
 
-## Instalación
+---
 
-Sigue estos pasos para ejecutar la aplicación web en tu máquina local:
+## Tecnologías Utilizadas
 
-1. **Asegúrate de tener instalado Python** (preferentemente Python 3.6 o superior). Si no lo tienes, puedes descargarlo desde [python.org](https://www.python.org/downloads/).
+- Python 3.11+
+- Flask
+- MongoDB (local)
+- HTML5 + CSS3 (Jinja2 templates)
+- JavaScript
+- JWT Authentication
+- dotenv
 
-2. **Crea un entorno virtual (opcional pero recomendado)**:
+---
 
-   - En Windows:
-     ```bash
-     python -m venv venv
-     ```
-   - En macOS/Linux:
-     ```bash
-     python3 -m venv venv
-     ```
+## Requisitos Previos
 
-   Para activar el entorno virtual:
+- Tener instalado **Python 3.10 o superior**.
+- Tener instalado **MongoDB local** (ejecutando en `localhost:27017`).
+  > Puedes descargarlo desde: https://www.mongodb.com/try/download/community
 
-   - En Windows:
-     ```bash
-     venv\Scripts\activate
-     ```
-   - En macOS/Linux:
-     ```bash
-     source venv/bin/activate
-     ```
+---
 
-3. **Instala Flask**:
-   Una vez tengas el entorno virtual activo, ejecuta el siguiente comando para instalar Flask:
+## Instalación del Proyecto
 
-   ```bash
-   pip install flask
+### 1. Clona el repositorio
 
-   ```
+```bash
+git clone https://github.com/tu_usuario/mortydex.git
+cd mortydex
+```
 
-4. **Ejecuta la página**:
-   Una vez tengas flask instalado, corre el siguiente comando en el bash para abrir la pagina:
 
-   ```bash
+###  2. Crea y activa un entorno virtual
+```bash
+python -m venv venv
+venv\Scripts\activate        # En Windows
+# source venv/bin/activate  # En Mac/Linux
+```
+### 3. Instala las dependencias
+```bash
+pip install -r requirements.txt
+```
+
+### 4.  Inicializa la Base de Datos
+Antes de correr el servidor, ejecuta el siguiente script para cargar datos de ejemplo desde los archivos JSON:
+```bash
+python Mortydex/load_DB.py
+```
+
+ ### 5. Ejecutar el Proyecto
+ ```bash
    python Mortydex/run.py
+```
+ ### 6. Abre la pagina en el navegador:
+ Cuando hayas iniciado la ejecución de run.py dirigete en tu navegador a la siguiente ip:
 
-   ```
-
-5. **Abre la pagina en el navegador**:
-   Cuando hayas iniciado la ejecución de run.py dirigete en tu navegador a la siguiente ip:
-
-   http://127.0.0.1:5000
+    http://127.0.0.1:5000

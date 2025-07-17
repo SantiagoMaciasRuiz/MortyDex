@@ -8,6 +8,10 @@ from dotenv import load_dotenv
 from functools import wraps
 from flask import jsonify
 from random import choice
+import subprocess
+import atexit
+import sys
+
 # Cargar variables de entorno
 load_dotenv()
 
@@ -36,6 +40,8 @@ try:
     users_collection = db.users
     posts_collection = db.posts
     items_collection = db.items
+    mortys_collection = db.mortys
+
     print("Conexión a MongoDB exitosa")
 except Exception as e:
     print(f"Error conectando a MongoDB: {e}")
@@ -252,12 +258,12 @@ def register():
             flash('El email ya está registrado', 'error')
             return render_template('register.html')
 
-        # ✅ Obtener morty aleatorio
-        mortys = list(mortys_collection.find({}))
-        avatar = choice(mortys)['img'] if mortys else '/static/images/icons/default.png'
+        # # ✅ Obtener morty aleatorio
+        # mortys = list(mortys_collection.find({}))
+        # avatar = choice(mortys)['img'] if mortys else '/static/images/icons/default.png'
 
         try:
-            user = Usuario(username, email, avatar=avatar)
+            user = Usuario(username, email)
             user.set_password(password)
             user_id = user.save()
 
@@ -328,5 +334,26 @@ def api_login():
     
     return {'success': False, 'message': 'Credenciales inválidas'}, 401
 
+# Obtener la ruta absoluta del script actual
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Ruta al script export_DB.py dentro de la carpeta Mortydex
+EXPORT_SCRIPT_PATH = os.path.join(BASE_DIR, 'export_DB.py')
+
+
+def guardar_datos_al_cerrar():
+    print("💾 Exportando datos antes de cerrar...")
+    try:
+        # Ejecutar el script de exportación
+        subprocess.run([sys.executable, EXPORT_SCRIPT_PATH], check=True)
+
+        print("✅ Datos exportados correctamente.")
+    except Exception as e:
+        print(f"❌ Error exportando base de datos: {e}")
+
+# Registrar la función para que se ejecute al cerrar la app
+atexit.register(guardar_datos_al_cerrar)
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
