@@ -1,7 +1,7 @@
 [
   {
     "_id": {
-      "$oid": "68757bf15c169ebf609ddae4"
+      "$oid": "6878688069720363e190badc"
     },
     "title": "Han visto el morty Guineo?",
     "content": "Estaba relajadito en Urabá y me encontré este care banano, no sé si alguien más lo habrá visto pero que hpta tiradero de caja",
@@ -25,7 +25,7 @@
   },
   {
     "_id": {
-      "$oid": "68757bf15c169ebf609ddae5"
+      "$oid": "6878688069720363e190badd"
     },
     "title": "Morty Vampiro avistado",
     "content": "Un Morty Vampiro apareció en el cementerio de Itagüí, ¡cuidado con los colmillos!",

@@ -1,10 +1,18 @@
 [
   {
     "_id": {
-      "$oid": "68786405050e4818a08c4066"
+      "$oid": "6878688069720363e190bade"
     },
     "username": "felo",
     "email": "felo@bancolombio.com",
     "password_hash": "scrypt:32768:8:1$MQPjKuk5lUyHbIE4$6d4cf7e682e5b80277576f85120eca642dcd191ade3a495786fb798ca6a2b5ce154c4b76496a7aec6148495efce9a697aa8c23ed13081abde30c77de9320a1eb"
+  },
+  {
+    "_id": {
+      "$oid": "687868cb6cdc3818a3e59c11"
+    },
+    "username": "Felo",
+    "email": "jj@gmail.com",
+    "password_hash": "scrypt:32768:8:1$zwbfJhOEM0Ht4VXh$31a0dde9c3f8ed9315573903efb93a8c6e3c983c24803f457a0d7f50f42efa4a8a270d8e946ada300f4da9d5da578ae6a02aa41f7cd6d717f99d9bddf0be8063"
   }
 ]
