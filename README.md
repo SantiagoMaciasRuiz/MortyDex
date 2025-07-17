@@ -87,4 +87,4 @@ python Mortydex/load_DB.py
 
 Cuando hayas iniciado la ejecución de run.py dirigete en tu navegador a la siguiente ip:
 
-    http://127.0.0.1:5000
+   http://127.0.0.1:5000
