@@ -48,18 +48,28 @@
     <div class="cards-background">
 
       <!-- Sección de subida -->
-      <section class="upload-section">
-        <h2>Subir Morty</h2>
-        <input type="file" id="mortyImage" accept="image/*">
-        <input type="text" id="mortyName" placeholder="Nombre del Morty">
-        <input type="text" id="mortyType" placeholder="Tipo de Morty">
-        <button id="uploadBtn">Subir</button>
-      </section>
+    <section class="upload-section">
+      <h2>Subir Morty</h2>
+      <form action="/subir_morty" method="POST" enctype="multipart/form-data">
+        <input type="file" name="mortyImage" accept="image/*" required>
+        <input type="text" name="mortyName" placeholder="Nombre del Morty" required>
+        <input type="text" name="mortyType" placeholder="Tipo de Morty" required>
+        <button type="submit">Subir</button>
+      </form>
+    </section>
+
 
       <!-- Grid de inventario -->
-      <section class="inventory-grid" id="inventoryGrid">
-        <!-- Items iniciales y subidos aparecerán aquí -->
+      <section class="inventory-grid">
+        {% for item in items %}
+          <div class="item-card">
+            <img src="{{ item.img }}" alt="{{ item.name }}">
+            <h3>{{ item.name }}</h3>
+            <p>Tipo: {{ item.type }}</p>
+          </div>
+        {% endfor %}
       </section>
+
 
     </div>
   </main>

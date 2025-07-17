@@ -185,12 +185,21 @@ def hallazgos():
 @app.route('/inventario')
 @login_required
 def inventario():
-    # Obtener items del usuario desde MongoDB
     user_id = session.get('user_id')
     items_cursor = items_collection.find({'user_id': user_id})
-    items = list(items_cursor)
-    
+
+    items = []
+    for item in items_cursor:
+        morty = mortys_collection.find_one({'_id': item['morty_id']})
+        if morty:
+            items.append({
+                'name': morty['name'],
+                'type': morty['type'],
+                'img': morty['img']
+            })
+
     return render_template('inventario.html', items=items)
+
 
 # API para obtener posts (usado por JavaScript)
 @app.route('/api/posts')
@@ -212,6 +221,45 @@ def api_posts():
 
     return jsonify(posts)
 
+from datetime import datetime
+from werkzeug.utils import secure_filename
+
+@app.route('/api/inventario/agregar', methods=['POST'])
+@login_required
+def agregar_al_inventario():
+    nombre = request.form.get('name')
+    tipo = request.form.get('type')
+    imagen = request.files.get('image')
+
+    if not nombre or not tipo or not imagen:
+        return jsonify({'success': False, 'message': 'Todos los campos son obligatorios'}), 400
+
+    # Generar nombre de archivo seguro
+    filename = secure_filename(f"pm-{datetime.utcnow().timestamp()}.png")
+    filepath = os.path.join(app.static_folder, 'images', 'mortys', filename)
+
+    try:
+        # Guardar imagen
+        imagen.save(filepath)
+
+        # Crear Morty general en colección mortys
+        morty_data = {
+            "name": nombre,
+            "type": tipo,
+            "img": f"/static/images/mortys/{filename}"
+        }
+        morty_id = mortys_collection.insert_one(morty_data).inserted_id
+
+        # Asociar al usuario en la colección de inventario
+        items_collection.insert_one({
+            "user_id": session['user_id'],
+            "morty_id": morty_id,
+            "added_at": datetime.utcnow()
+        })
+
+        return jsonify({'success': True, 'message': 'Morty subido correctamente.'})
+    except Exception as e:
+        return jsonify({'success': False, 'message': f'Error al guardar: {e}'}), 500
 
 # Página de login
 @app.route('/login', methods=['GET', 'POST'])
@@ -354,6 +402,54 @@ def guardar_datos_al_cerrar():
 # Registrar la función para que se ejecute al cerrar la app
 atexit.register(guardar_datos_al_cerrar)
 
+
+# from routes.inventario import bp_inventario
+from werkzeug.utils import secure_filename
+from datetime import datetime
+# app.register_blueprint(bp_inventario)
+
+
+
+
+@app.route('/subir_morty', methods=['POST'])
+@login_required
+def subir_morty():
+    image = request.files.get('mortyImage')
+    name = request.form.get('mortyName')
+    tipo = request.form.get('mortyType')
+    
+    if not image or not name or not tipo:
+        flash("Faltan datos en el formulario", "error")
+        return redirect(url_for('inventario'))
+
+    #  Obtener número siguiente de imagen
+    existing = list(mortys_collection.find().sort("id", -1))
+    last_id = existing[0]["id"] if existing else 282  # puedes cambiar 282 por el último ID fijo
+    new_id = last_id + 1
+    filename = f"pm-{new_id:03d}.jpg"
+
+    #  Guardar imagen en carpeta estática
+    save_path = os.path.join(app.static_folder, 'images/mortys', filename)
+    image.save(save_path)
+
+    #  Insertar en colección 'mortys'
+    morty_data = {
+        "id": new_id,
+        "name": name,
+        "type": tipo,
+        "img": f"/static/images/mortys/{filename}"
+    }
+    result = mortys_collection.insert_one(morty_data)
+
+    #  Agregar al inventario del usuario
+    items_collection.insert_one({
+        "user_id": session['user_id'],
+        "morty_id": result.inserted_id,
+        "added_at": datetime.utcnow()
+    })
+
+    flash("¡Nuevo Morty subido y agregado a tu inventario!", "success")
+    return redirect(url_for('inventario'))
 
 if __name__ == '__main__':
     app.run(debug=False)

@@ -1,0 +1,26 @@
+[
+  {
+    "_id": {
+      "$oid": "687907175c89ffbab707ca60"
+    },
+    "user_id": "68786a16f32f6c5d3f73beaa",
+    "morty_id": {
+      "$oid": "687907175c89ffbab707ca5f"
+    },
+    "added_at": {
+      "$date": "2025-07-17T14:22:15.263Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "687909ebac50d0958092efff"
+    },
+    "user_id": "68786a16f32f6c5d3f73beaa",
+    "morty_id": {
+      "$oid": "687909ebac50d0958092effe"
+    },
+    "added_at": {
+      "$date": "2025-07-17T14:34:19.669Z"
+    }
+  }
+]

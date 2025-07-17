@@ -24,3 +24,5 @@ if __name__ == "__main__":
     exportar("mortys", "mortys.json")
     exportar("posts", "posts.json")
     exportar("users", "users.json")
+    exportar('items', 'inventario.json')
+
