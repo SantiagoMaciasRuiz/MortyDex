@@ -32,6 +32,19 @@
   > Puedes descargarlo desde: https://www.mongodb.com/try/download/community
 
 ---
+## Primera vez usando MongoDB 📦
+
+No necesitas crear manualmente la base de datos. Al ejecutar el script `load_DB.py`, MongoDB creará automáticamente:
+
+- La base de datos `mortydex`
+- Las colecciones `mortys`, `posts`, y `users`
+- Los datos se cargarán desde archivos JSON ubicados en la carpeta `/data`
+
+Solo asegúrate de que:
+
+1. MongoDB esté instalado y corriendo en tu máquina local (`mongod`)
+2. Estés dentro del entorno virtual (si lo usas)
+
 
 ## Instalación del Proyecto
 
