@@ -28,10 +28,8 @@
     </div>
    <div class="login-button">
   {% if session.username %}
-    <span>¡Hola, {{ session.username }}!</span>
-    <a href="/logout">
-      <img src="/static/images/icons/Login.png" alt="Salir" class="nav-icon"/>
-      Salir
+    <a href="/hallazgos">
+      <img src="/static/images/icons/user_icon.jpg" alt="Foro" class="nav-icon"/>
     </a>
   {% else %}
     <a href="/login">
