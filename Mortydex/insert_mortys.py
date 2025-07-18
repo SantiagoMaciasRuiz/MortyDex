@@ -15,8 +15,8 @@ posts = [
             {'user': 'Rick', 'text': 'Qué chimba!'},
             {'user': 'Summer', 'text': '¡Yo también lo vi!'}
         ],
-        'morty_img': '/static/images/mortys/morty_guineo.png',  # 👈 Añadir imagen
-        'morty_type': 'Plátano',
+        'morty_img': '/static/images/mortys/PM-125.jpg',  # 👈 Añadir imagen
+        'morty_type': 'Piedra',
         'created_at': datetime.utcnow()
     },
     {
@@ -27,8 +27,8 @@ posts = [
         'comments': [
             {'user': 'Beth', 'text': '¡Cuidado con esos colmillos!'}
         ],
-        'morty_img': '/static/images/mortys/vampire_morty.png',
-        'morty_type': 'Oscuro',
+        'morty_img': '/static/images/mortys/pm-153.png"',
+        'morty_type': 'Papel',
         'created_at': datetime.utcnow()
     }
 ]
