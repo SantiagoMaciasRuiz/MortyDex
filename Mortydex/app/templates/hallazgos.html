@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hallazgos – Mortydex</title>
   <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet"/>
-  <!-- CSS global y luego CSS del foro -->
   <link rel="stylesheet" href="/static/css/mortydex.css"/>
   <link rel="stylesheet" href="/static/css/forum.css"/>
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/icons/favicon.png') }}"/>
@@ -28,19 +27,18 @@
       <img src="/static/images/icons/logo.png" alt="Logo"/>
     </div>
     <div class="login-button">
-  {% if session.username %}
-    <a href="/logout">
-      <img src="/static/images/icons/user_icon.jpg" alt="Salir" class="nav-icon"/>
-      Salir
-    </a>
-  {% else %}
-    <a href="/login">
-      <img src="/static/images/icons/Login.png" alt="Ingresar" class="nav-icon"/>
-      Ingresar
-    </a>
-  {% endif %}
-  </div>
-
+      {% if session.username %}
+        <a href="/logout">
+          <img src="/static/images/icons/user_icon.jpg" alt="Salir" class="nav-icon"/>
+          Salir
+        </a>
+      {% else %}
+        <a href="/login">
+          <img src="/static/images/icons/Login.png" alt="Ingresar" class="nav-icon"/>
+          Ingresar
+        </a>
+      {% endif %}
+    </div>
   </header>
 
   <main>
@@ -67,25 +65,45 @@
 
         <!-- DERECHA: sidebar -->
         <div class="sidebar-card">
-  {% if session.username %}
-    <h2>Tu perfil</h2>
-    <div class="user-profile-card">
-      <img src="/static/images/mortys/avatar_morty.jpg" alt="Avatar de Morty" class="user-avatar"/>
-      <p><strong>{{ session.username }}</strong></p>
-      <p>Morty coleccionista 🧪</p>
-      <a href="/logout" class="logout-button">Cerrar sesión</a>
-    </div>
-  {% else %}
-    <h2>Iniciar Sesión</h2>
-    <form action="/login" method="post">
-      <label>Usuario</label>
-      <input type="text" name="username" required/>
-      <label>Contraseña</label>
-      <input type="password" name="password" required/>
-      <button type="submit">Entrar</button>
-    </form>
-  {% endif %}
-  </div>
+        {% if session.username %}
+          <!-- Perfil del usuario -->
+          <div class="user-profile">
+            <img src="/static/images/mortys/avatar_morty.jpg" alt="Avatar" class="user-avatar">
+            <div class="user-info">
+              <h3 class="username">{{ session.username }}</h3>
+              <p class="user-title">Morty coleccionista 🧪</p>
+            </div>
+            <a href="/logout" class="logout-btn">Cerrar sesión</a>
+          </div>
+            
+           <!-- Formulario de creación -->
+          <div class="create-post">
+            <h3>Crear nuevo hallazgo</h3>
+            <form action="/crear_post" method="POST">
+              <textarea name="content" placeholder="¡Describe tu hallazgo aquí!" required></textarea>
+              <button type="submit" class="submit-btn">Publicar</button>
+            </form>
+          </div>
+            
+            <!-- Actividad reciente -->
+          <div class="recent-activity">
+            <h3>Actividad Reciente</h3>
+            <div class="activity-list" id="recentActivity">
+              <div class="loading-activity">Cargando actividad...</div>
+            </div>
+          </div>
+          {% else %}
+            <h2>Iniciar Sesión</h2>
+            <form action="/login" method="post">
+              <label>Usuario</label>
+              <input type="text" name="username" required/>
+              <label>Contraseña</label>
+              <input type="password" name="password" required/>
+              <button type="submit">Entrar</button>
+            </form>
+          {% endif %}
+        </div>
+      </div>
 
       <!-- 2.3) Paginación -->
       <div class="pagination forum-pag">
@@ -98,19 +116,5 @@
 
   <script defer src="/static/js/forum.js"></script>
   <script defer src="/static/js/mortys.js"></script>
-  <script>
-    // Rellenar actividad reciente con los últimos 5 mortys
-    document.addEventListener('DOMContentLoaded', () => {
-      const list = document.getElementById('recentActivity');
-      const recent = mortys.slice(-5).reverse();
-      recent.forEach(m => {
-        const li = document.createElement('li');
-        li.textContent = `#${m.id} ${m.name}`;
-        list.appendChild(li);
-      });
-    });
-  </script>
 </body>
 </html>
-
-

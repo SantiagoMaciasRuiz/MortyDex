@@ -215,3 +215,113 @@ body {
   font-weight: bold;
   color: #333;
 }
+/* Estilos para comentarios */
+.comment {
+  padding: 8px;
+  margin: 8px 0;
+  background: #f8f8f8;
+  border-radius: 4px;
+  border-left: 3px solid #00c8c8;
+}
+
+.comment small {
+  display: block;
+  color: #666;
+  font-size: 0.8em;
+  margin-top: 4px;
+}
+
+.comment-form {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.comment-form input {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.comment-form button {
+  padding: 8px 12px;
+  background: #00c8c8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Estilos para actividad reciente */
+.recent-activity {
+  margin-top: 20px;
+}
+
+.recent-activity ul {
+  list-style: none;
+  padding: 0;
+}
+
+.recent-activity li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.recent-activity li:last-child {
+  border-bottom: none;
+}
+
+
+
+
+
+
+
+/* Estilos para la actividad reciente */
+.recent-activity {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 15px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.activity-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-user {
+  font-weight: bold;
+  color: #00c8c8;
+  margin-right: 5px;
+}
+
+.activity-action {
+  margin-right: 5px;
+}
+
+.activity-time {
+  color: #666;
+  font-size: 0.8em;
+  margin-left: auto;
+}
+
+/* Estilo para scrollbar */
+.recent-activity::-webkit-scrollbar {
+  width: 5px;
+}
+
+.recent-activity::-webkit-scrollbar-thumb {
+  background: #00c8c8;
+  border-radius: 10px;
+}

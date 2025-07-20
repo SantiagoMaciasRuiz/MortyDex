@@ -286,17 +286,24 @@ def logout():
 
 # Ruta para crear posts (ejemplo)
 
-
 @app.route('/crear_post', methods=['POST'])
 @login_required
 def crear_post():
-    title = request.form.get('title')
-    content = request.form.get('content')
+    try:
+        title = request.form.get('title')
+        content = request.form.get('content')
+        
+        if not title or not content:
+            flash('Faltan campos requeridos', 'error')
+            return redirect(url_for('hallazgos'))
 
-    if title and content:
-        # 👉 Elegir un Morty aleatorio
-        morty = db.mortys.aggregate([{'$sample': {'size': 1}}]).next()
+        # Validación adicional
+        if len(title) > 100 or len(content) > 1000:
+            flash('Texto demasiado largo', 'error')
+            return redirect(url_for('hallazgos'))
 
+        morty = mortys_collection.aggregate([{'$sample': {'size': 1}}]).next()
+        
         post_data = {
             'title': title,
             'content': content,
@@ -305,16 +312,20 @@ def crear_post():
             'seen_count': 0,
             'comments': [],
             'created_at': datetime.utcnow(),
-            #  Agregar imagen y tipo del Morty
             'morty_name': morty.get('name'),
             'morty_type': morty.get('type'),
             'morty_img': morty.get('img')
         }
 
+        # Insertar y redirigir
         posts_collection.insert_one(post_data)
         flash('Post creado exitosamente', 'success')
+        return redirect(url_for('hallazgos'))
 
-    return redirect(url_for('hallazgos'))
+    except Exception as e:
+        print(f"Error en crear_post: {str(e)}")  # Log para debug
+        flash('Error al crear el post', 'error')
+        return redirect(url_for('hallazgos'))
 
 
 # API endpoints para uso con JavaScript  
@@ -464,6 +475,139 @@ def eliminar_morty_inventario():
         return jsonify({'success': True, 'message': 'Morty eliminado del inventario'})
     else:
         return jsonify({'success': False, 'message': 'No se encontró el Morty en tu inventario'}), 404
-
+# Agregar esta ruta para manejar comentarios
+@app.route('/api/posts/<post_id>/comments', methods=['POST'])
+@login_required
+def add_comment(post_id):
+    try:
+        data = request.get_json()
+        comment_text = data.get('text')
+        
+        if not comment_text:
+            return jsonify({'success': False, 'message': 'El comentario no puede estar vacío'}), 400
+        
+        # Crear el nuevo comentario
+        new_comment = {
+            'user': session['username'],
+            'text': comment_text,
+            'created_at': datetime.utcnow()
+        }
+        
+        # Actualizar el post en MongoDB
+        result = posts_collection.update_one(
+            {'_id': ObjectId(post_id)},
+            {'$push': {'comments': new_comment}}
+        )
+        
+        if result.modified_count == 1:
+            return jsonify({
+                'success': True,
+                'comment': new_comment
+            }), 201
+        else:
+            return jsonify({'success': False, 'message': 'Post no encontrado'}), 404
+            
+    except Exception as e:
+        return jsonify({'success': False, 'message': str(e)}), 500
+    
+@app.route('/api/comments/recent')
+def get_recent_comments():
+    try:
+        # Obtener los 5 comentarios más recientes de todos los posts
+        pipeline = [
+            {'$unwind': '$comments'},
+            {'$sort': {'comments.created_at': -1}},
+            {'$limit': 5},
+            {'$project': {
+                'user': '$comments.user',
+                'text': '$comments.text',
+                'created_at': '$comments.created_at',
+                'post_title': '$title'
+            }}
+        ]
+        
+        recent_comments = list(posts_collection.aggregate(pipeline))
+        
+        # Convertir ObjectId a string y datetime a string ISO
+        for comment in recent_comments:
+            comment['_id'] = str(comment.get('_id', ''))
+            comment['created_at'] = comment['created_at'].isoformat()
+        
+        return jsonify(recent_comments)
+        
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+@app.route('/api/posts/<post_id>/seen', methods=['POST'])
+def increment_seen_count(post_id):
+    try:
+        result = posts_collection.update_one(
+            {'_id': ObjectId(post_id)},
+            {'$inc': {'seen_count': 1}}
+        )
+        
+        if result.modified_count == 1:
+            updated = posts_collection.find_one({'_id': ObjectId(post_id)})
+            return jsonify({
+                'success': True,
+                'new_count': updated['seen_count']
+            })
+        else:
+            return jsonify({'success': False, 'message': 'Post no encontrado'}), 404
+            
+    except Exception as e:
+        return jsonify({'success': False, 'message': str(e)}), 500
+@app.route('/api/activity')
+def get_recent_activity():
+    try:
+        # Obtener los últimos 10 eventos de actividad
+        pipeline = [
+            # Primero obtenemos posts recientes
+            {'$match': {'created_at': {'$exists': True}}},
+            {'$sort': {'created_at': -1}},
+            {'$limit': 5},
+            {'$project': {
+                'user': '$author',
+                'action': 'tuvo un hallazgo',
+                'timestamp': '$created_at',
+                'type': 'post'
+            }},
+            # Luego obtenemos comentarios recientes
+            {
+                '$unionWith': {
+                    'coll': 'posts',
+                    'pipeline': [
+                        {'$unwind': '$comments'},
+                        {'$sort': {'comments.created_at': -1}},
+                        {'$limit': 5},
+                        {'$project': {
+                            'user': '$comments.user',
+                            'action': 'comentó un hallazgo',
+                            'timestamp': '$comments.created_at',
+                            'type': 'comment'
+                        }}
+                    ]
+                }
+            },
+            # Ordenamos todo por fecha
+            {'$sort': {'timestamp': -1}},
+            {'$limit': 10}
+        ]
+        
+        activities = list(posts_collection.aggregate(pipeline))
+        
+        # Formateamos la respuesta
+        result = []
+        for act in activities:
+            result.append({
+                'user': act.get('user', 'Anónimo'),
+                'action': act.get('action', 'interactuó'),
+                'timestamp': act.get('timestamp', datetime.utcnow()).isoformat()
+            })
+        
+        return jsonify(result)
+        
+    except Exception as e:
+        print(f"Error en get_recent_activity: {str(e)}")
+        return jsonify({'error': str(e)}), 500
 if __name__ == '__main__':
     app.run(debug=False)

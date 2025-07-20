@@ -1,36 +1,12 @@
 [
   {
     "_id": {
-      "$oid": "687d33e126f9e9c58e5fc0c2"
-    },
-    "title": "Han visto el morty Guineo?",
-    "content": "Estaba relajadito en Urabá y me encontré este care banano, no sé si alguien más lo habrá visto pero que hpta tiradero de caja",
-    "author": "Rick",
-    "seen_count": 5,
-    "comments": [
-      {
-        "user": "Rick",
-        "text": "Qué chimba!"
-      },
-      {
-        "user": "Summer",
-        "text": "¡Yo también lo vi!"
-      }
-    ],
-    "morty_img": "/static/images/mortys/PM-125.png",
-    "morty_type": "Plátano",
-    "created_at": {
-      "$date": "2025-07-14T21:51:45.491Z"
-    }
-  },
-  {
-    "_id": {
       "$oid": "687d33e126f9e9c58e5fc0c3"
     },
     "title": "Morty Vampiro avistado",
     "content": "Un Morty Vampiro apareció en el cementerio de Itagüí, ¡cuidado con los colmillos!",
     "author": "Beth",
-    "seen_count": 3,
+    "seen_count": 5,
     "comments": [
       {
         "user": "Beth",
@@ -42,5 +18,62 @@
     "created_at": {
       "$date": "2025-07-14T21:51:45.491Z"
     }
+  },
+  {
+    "_id": {
+      "$oid": "687d66597e34032247a8272d"
+    },
+    "title": "Morty Sayayin",
+    "content": "estaba en medallo mor",
+    "author": "felo",
+    "user_id": "687d33e126f9e9c58e5fc0c4",
+    "seen_count": 1,
+    "comments": [
+      {
+        "user": "felo",
+        "text": "que miedo ese pirobo",
+        "created_at": {
+          "$date": "2025-07-20T21:59:46.001Z"
+        }
+      }
+    ],
+    "created_at": {
+      "$date": "2025-07-20T21:57:45.621Z"
+    },
+    "morty_name": "Morty Fusionado",
+    "morty_type": "Tijera",
+    "morty_img": "/static/images/mortys/pm-047.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "687d66ef4cd5e703f4f50114"
+    },
+    "title": "en castilla vi un loquito morty",
+    "content": "casi me roba",
+    "author": "felo",
+    "user_id": "687d33e126f9e9c58e5fc0c4",
+    "seen_count": 1,
+    "comments": [
+      {
+        "user": "felo",
+        "text": "alguien mas lo vio ?",
+        "created_at": {
+          "$date": "2025-07-20T22:00:34.016Z"
+        }
+      },
+      {
+        "user": "macias",
+        "text": "yoooo",
+        "created_at": {
+          "$date": "2025-07-20T22:01:30.761Z"
+        }
+      }
+    ],
+    "created_at": {
+      "$date": "2025-07-20T22:00:15.981Z"
+    },
+    "morty_name": "Morty Ingeniero de Sistemas",
+    "morty_type": "Papel",
+    "morty_img": "/static/images/mortys/pm-240.png"
   }
 ]

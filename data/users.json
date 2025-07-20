@@ -14,5 +14,13 @@
     "username": "Felo",
     "email": "jj@gmail.com",
     "password_hash": "scrypt:32768:8:1$zwbfJhOEM0Ht4VXh$31a0dde9c3f8ed9315573903efb93a8c6e3c983c24803f457a0d7f50f42efa4a8a270d8e946ada300f4da9d5da578ae6a02aa41f7cd6d717f99d9bddf0be8063"
+  },
+  {
+    "_id": {
+      "$oid": "687d67294cd5e703f4f50115"
+    },
+    "username": "macias",
+    "email": "macias@noquierohacermas.com",
+    "password_hash": "scrypt:32768:8:1$s4TWpFyD3GdQ2Wrb$08c340b040a4c51a2b19f3ff9fa2391688fc313fcc3eb986542f51672681168ec1b8d0c50251e354f1509143a490aab36692cbd426764aa4d56486860358dcd5"
   }
 ]
