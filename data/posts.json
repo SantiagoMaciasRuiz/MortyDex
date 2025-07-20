@@ -75,39 +75,5 @@
     "morty_name": "Morty Ingeniero de Sistemas",
     "morty_type": "Papel",
     "morty_img": "/static/images/mortys/pm-240.png"
-  },
-  {
-    "_id": {
-      "$oid": "687d6aa8c561816a275cc321"
-    },
-    "title": "en manizales habia uno ",
-    "content": "yo estaba loquito y paso con su rasho laser",
-    "author": "macias",
-    "user_id": "687d67294cd5e703f4f50115",
-    "seen_count": 0,
-    "comments": [],
-    "created_at": {
-      "$date": "2025-07-20T22:16:08.878Z"
-    },
-    "morty_name": "Morty CareNalga",
-    "morty_type": "Papel",
-    "morty_img": "/static/images/mortys/pm-283.png"
-  },
-  {
-    "_id": {
-      "$oid": "687d76c9996951c71c357122"
-    },
-    "title": "Morty Sayayin",
-    "content": "Foto en planeta vegeta",
-    "author": "macias",
-    "user_id": "687d67294cd5e703f4f50115",
-    "seen_count": 0,
-    "comments": [],
-    "created_at": {
-      "$date": "2025-07-20T23:07:53.181Z"
-    },
-    "morty_name": "Morty Punketo",
-    "morty_type": "Tijera",
-    "morty_img": "/static/images/mortys/pm-100.png"
   }
 ]
