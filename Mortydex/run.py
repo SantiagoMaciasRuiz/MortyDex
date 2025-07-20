@@ -11,6 +11,7 @@ from random import choice
 import subprocess
 import atexit
 import sys
+from datetime import datetime
 
 # Cargar variables de entorno
 load_dotenv()
@@ -181,25 +182,19 @@ def hallazgos():
     
     return render_template('hallazgos.html', posts=posts)
 
-# Página de inventario - ahora requiere login
 @app.route('/inventario')
 @login_required
 def inventario():
     user_id = session.get('user_id')
     items_cursor = items_collection.find({'user_id': user_id})
 
-    items = []
-    for item in items_cursor:
-        morty = mortys_collection.find_one({'_id': item['morty_id']})
-        if morty:
-            items.append({
-                'name': morty['name'],
-                'type': morty['type'],
-                'img': morty['img']
-            })
+    # Obtén todos los morty_id (enteros) del usuario
+    morty_ids = [item['morty_id'] for item in items_cursor]
 
-    return render_template('inventario.html', items=items)
+    # Busca los mortys completos en la colección mortys
+    mortys = list(mortys_collection.find({'id': {'$in': morty_ids}}))
 
+    return render_template('inventario.html', items=mortys)
 
 # API para obtener posts (usado por JavaScript)
 @app.route('/api/posts')
@@ -220,46 +215,6 @@ def api_posts():
         })
 
     return jsonify(posts)
-
-from datetime import datetime
-from werkzeug.utils import secure_filename
-
-@app.route('/api/inventario/agregar', methods=['POST'])
-@login_required
-def agregar_al_inventario():
-    nombre = request.form.get('name')
-    tipo = request.form.get('type')
-    imagen = request.files.get('image')
-
-    if not nombre or not tipo or not imagen:
-        return jsonify({'success': False, 'message': 'Todos los campos son obligatorios'}), 400
-
-    # Generar nombre de archivo seguro
-    filename = secure_filename(f"pm-{datetime.utcnow().timestamp()}.png")
-    filepath = os.path.join(app.static_folder, 'images', 'mortys', filename)
-
-    try:
-        # Guardar imagen
-        imagen.save(filepath)
-
-        # Crear Morty general en colección mortys
-        morty_data = {
-            "name": nombre,
-            "type": tipo,
-            "img": f"/static/images/mortys/{filename}"
-        }
-        morty_id = mortys_collection.insert_one(morty_data).inserted_id
-
-        # Asociar al usuario en la colección de inventario
-        items_collection.insert_one({
-            "user_id": session['user_id'],
-            "morty_id": morty_id,
-            "added_at": datetime.utcnow()
-        })
-
-        return jsonify({'success': True, 'message': 'Morty subido correctamente.'})
-    except Exception as e:
-        return jsonify({'success': False, 'message': f'Error al guardar: {e}'}), 500
 
 # Página de login
 @app.route('/login', methods=['GET', 'POST'])
@@ -405,7 +360,6 @@ atexit.register(guardar_datos_al_cerrar)
 
 # from routes.inventario import bp_inventario
 from werkzeug.utils import secure_filename
-from datetime import datetime
 # app.register_blueprint(bp_inventario)
 
 
@@ -444,12 +398,72 @@ def subir_morty():
     #  Agregar al inventario del usuario
     items_collection.insert_one({
         "user_id": session['user_id'],
-        "morty_id": result.inserted_id,
+        "morty_id": new_id,  # <-- el id entero del Morty
         "added_at": datetime.utcnow()
     })
 
     flash("¡Nuevo Morty subido y agregado a tu inventario!", "success")
     return redirect(url_for('inventario'))
+@app.route('/api/inventario/agregar', methods=['POST'])
+def agregar_morty_inventario():
+    if 'user_id' not in session:
+        return jsonify({'success': False, 'message': 'Debes iniciar sesión'}), 401
+
+    data = request.get_json()
+    morty_id = data.get('morty_id')
+    user_id = session['user_id']
+
+    if not morty_id:
+        return jsonify({'success': False, 'message': 'Falta morty_id'}), 400
+
+    try:
+        morty_id = int(morty_id)
+    except Exception:
+        return jsonify({'success': False, 'message': 'morty_id inválido'}), 400
+
+    # Verifica si ya está en el inventario
+    ya_tiene = items_collection.find_one({'user_id': user_id, 'morty_id': morty_id})
+    if ya_tiene:
+        return jsonify({'success': False, 'message': 'Ya tienes este Morty en tu inventario'}), 409
+
+    items_collection.insert_one({
+        'user_id': user_id,
+        'morty_id': morty_id,
+        'added_at': datetime.utcnow()
+    })
+    return jsonify({'success': True, 'message': 'Morty agregado al inventario'})
+@app.route('/api/inventario')
+def obtener_inventario():
+    if 'user_id' not in session:
+        return jsonify([])
+
+    user_id = session['user_id']
+    inventario = list(items_collection.find({'user_id': user_id}))
+    morty_ids = [item['morty_id'] for item in inventario]
+    mortys = list(mortys_collection.find({'id': {'$in': morty_ids}}))
+    return jsonify(mortys)
+@app.route('/api/inventario/eliminar', methods=['POST'])
+def eliminar_morty_inventario():
+    if 'user_id' not in session:
+        return jsonify({'success': False, 'message': 'Debes iniciar sesión'}), 401
+
+    data = request.get_json()
+    morty_id = data.get('morty_id')
+    user_id = session['user_id']
+
+    if not morty_id:
+        return jsonify({'success': False, 'message': 'Falta morty_id'}), 400
+
+    try:
+        morty_id = int(morty_id)
+    except Exception:
+        return jsonify({'success': False, 'message': 'morty_id inválido'}), 400
+
+    result = items_collection.delete_one({'user_id': user_id, 'morty_id': morty_id})
+    if result.deleted_count == 1:
+        return jsonify({'success': True, 'message': 'Morty eliminado del inventario'})
+    else:
+        return jsonify({'success': False, 'message': 'No se encontró el Morty en tu inventario'}), 404
 
 if __name__ == '__main__':
     app.run(debug=False)

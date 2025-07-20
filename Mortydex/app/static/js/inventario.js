@@ -1,3 +1,24 @@
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.remove-inventory-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const mortyId = this.getAttribute('data-morty-id');
+      fetch('/api/inventario/eliminar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ morty_id: mortyId })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          location.reload();
+        } else {
+          alert(data.message || 'No se pudo eliminar.');
+        }
+      });
+    });
+  });
+});
+
 document.getElementById('uploadBtn').addEventListener('click', () => {
   const fileInput = document.getElementById('mortyImage');
   const nameInput = document.getElementById('mortyName');

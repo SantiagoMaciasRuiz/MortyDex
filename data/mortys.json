@@ -1,7 +1,7 @@
 [
   {
     "_id": {
-      "$oid": "68786a16f32f6c5d3f73be98"
+      "$oid": "687d33e126f9e9c58e5fc0b2"
     },
     "id": 1,
     "name": "Morty Cascado",
@@ -10,7 +10,7 @@
   },
   {
     "_id": {
-      "$oid": "68786a16f32f6c5d3f73be99"
+      "$oid": "687d33e126f9e9c58e5fc0b3"
     },
     "id": 2,
     "name": "Morty Conejo",
@@ -19,7 +19,7 @@
   },
   {
     "_id": {
-      "$oid": "68786a16f32f6c5d3f73be9a"
+      "$oid": "687d33e126f9e9c58e5fc0b4"
     },
     "id": 3,
     "name": "Morty Mutado",
@@ -28,7 +28,7 @@
   },
   {
     "_id": {
-      "$oid": "68786a16f32f6c5d3f73be9b"
+      "$oid": "687d33e126f9e9c58e5fc0b5"
     },
     "id": 4,
     "name": "Morty Fusionado",
@@ -37,7 +37,7 @@
   },
   {
     "_id": {
-      "$oid": "68786a16f32f6c5d3f73be9c"
+      "$oid": "687d33e126f9e9c58e5fc0b6"
     },
     "id": 5,
     "name": "Morty Gatero",
@@ -46,7 +46,7 @@
   },
   {
     "_id": {
-      "$oid": "68786a16f32f6c5d3f73be9d"
+      "$oid": "687d33e126f9e9c58e5fc0b7"
     },
     "id": 6,
     "name": "Morty Gymbro",
@@ -55,7 +55,7 @@
   },
   {
     "_id": {
-      "$oid": "68786a16f32f6c5d3f73be9e"
+      "$oid": "687d33e126f9e9c58e5fc0b8"
     },
     "id": 7,
     "name": "Morty Venezolano",
@@ -64,7 +64,7 @@
   },
   {
     "_id": {
-      "$oid": "68786a16f32f6c5d3f73be9f"
+      "$oid": "687d33e126f9e9c58e5fc0b9"
     },
     "id": 8,
     "name": "Morty Mago",
@@ -73,7 +73,7 @@
   },
   {
     "_id": {
-      "$oid": "68786a16f32f6c5d3f73bea0"
+      "$oid": "687d33e126f9e9c58e5fc0ba"
     },
     "id": 9,
     "name": "Morty Mullet",
@@ -82,7 +82,7 @@
   },
   {
     "_id": {
-      "$oid": "68786a16f32f6c5d3f73bea1"
+      "$oid": "687d33e126f9e9c58e5fc0bb"
     },
     "id": 10,
     "name": "Morty Afro",
@@ -91,7 +91,7 @@
   },
   {
     "_id": {
-      "$oid": "68786a16f32f6c5d3f73bea2"
+      "$oid": "687d33e126f9e9c58e5fc0bc"
     },
     "id": 11,
     "name": "Morty CareNalga",
@@ -100,7 +100,7 @@
   },
   {
     "_id": {
-      "$oid": "68786a16f32f6c5d3f73bea3"
+      "$oid": "687d33e126f9e9c58e5fc0bd"
     },
     "id": 12,
     "name": "Morty Punketo",
@@ -109,7 +109,7 @@
   },
   {
     "_id": {
-      "$oid": "68786a16f32f6c5d3f73bea4"
+      "$oid": "687d33e126f9e9c58e5fc0be"
     },
     "id": 13,
     "name": "Morty Ingeniero de Sistemas",
@@ -118,7 +118,7 @@
   },
   {
     "_id": {
-      "$oid": "68786a16f32f6c5d3f73bea5"
+      "$oid": "687d33e126f9e9c58e5fc0bf"
     },
     "id": 14,
     "name": "Morty TaxiDriver",
@@ -127,7 +127,7 @@
   },
   {
     "_id": {
-      "$oid": "68786a16f32f6c5d3f73bea6"
+      "$oid": "687d33e126f9e9c58e5fc0c0"
     },
     "id": 15,
     "name": "Morty Vampiro",
@@ -136,11 +136,29 @@
   },
   {
     "_id": {
-      "$oid": "687909ebac50d0958092effe"
+      "$oid": "687d33e126f9e9c58e5fc0c1"
     },
     "id": 16,
     "name": "Morty Pirata",
     "type": "Tijera",
     "img": "/static/images/mortys/PM-016.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "687d4f6a865b75a804221716"
+    },
+    "id": 17,
+    "name": "Old Morty",
+    "type": "papel",
+    "img": "/static/images/mortys/pm-017.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "687d4f7d865b75a804221718"
+    },
+    "id": 18,
+    "name": "sadas",
+    "type": "asdasd",
+    "img": "/static/images/mortys/pm-018.jpg"
   }
 ]

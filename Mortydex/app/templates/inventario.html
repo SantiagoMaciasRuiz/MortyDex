@@ -59,19 +59,28 @@
 
       <!-- Grid de inventario -->
       <section class="inventory-grid">
-        {% for item in items %}
-          <div class="item-card">
-            <img src="{{ item.img }}" alt="{{ item.name }}">
-            <h3>{{ item.name }}</h3>
-            <p>Tipo: {{ item.type }}</p>
-          </div>
-        {% endfor %}
+        {% if items %}
+          {% for m in items %}
+            <div class="item-card">
+              <div class="img-container">
+                <img src="{{ m.img }}" alt="{{ m.name }}">
+                <button class="remove-inventory-btn" data-morty-id="{{ m.id }}">Quitar del inventario</button>
+              </div>
+              <div class="card-text">
+                <h3>#{{ m.id }} {{ m.name }}</h3>
+                <p><strong>Tipo:</strong> {{ m.type }}</p>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p style="text-align:center;">Tu inventario está vacío.</p>
+        {% endif %}
       </section>
 
 
     </div>
   </main>
 
-  <script defer src="/static/js/inventario.js"></script>
+
 </body>
 </html>

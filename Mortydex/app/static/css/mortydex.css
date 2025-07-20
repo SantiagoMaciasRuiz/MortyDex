@@ -155,10 +155,11 @@ body {
 /* Contenedor fijo para la imagen */
 /* ---------------------------- */
 .img-container {
+  position: relative;
+  display: inline-block;
   width: 100%;
   height: 200px;       /* alto uniforme */
   overflow: hidden;    
-  display: flex;
   align-items: center;
   justify-content: center;
   background-color: #f2f2f2;
@@ -171,6 +172,28 @@ body {
   max-height: 100%;
   max-width: 100%;
   object-fit: contain;
+}
+
+/* Botón para añadir a inventario */
+.add-inventory-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffcc00;
+  color: #222;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 2;
+}
+
+.img-container:hover .add-inventory-btn {
+  opacity: 1;
 }
 
 /* ---------------------------- */
@@ -285,4 +308,21 @@ body {
 /* Estilo para el texto dentro del span cuando el usuario está loggeado */
 .login-button span {
   color: white; /* Cambia el color del texto a blanco */
+}
+
+/* Nueva clase para el logo que aparece al hacer hover */
+.hover-logo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.img-container:hover .hover-logo {
+  opacity: 1;
 }
