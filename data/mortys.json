@@ -160,5 +160,14 @@
     "name": "sadas",
     "type": "asdasd",
     "img": "/static/images/mortys/pm-018.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "687d6b08c561816a275cc323"
+    },
+    "id": 19,
+    "name": "Egg morty",
+    "type": "rock",
+    "img": "/static/images/mortys/pm-019.jpg"
   }
 ]
