@@ -22,5 +22,13 @@
     "username": "macias",
     "email": "macias@noquierohacermas.com",
     "password_hash": "scrypt:32768:8:1$s4TWpFyD3GdQ2Wrb$08c340b040a4c51a2b19f3ff9fa2391688fc313fcc3eb986542f51672681168ec1b8d0c50251e354f1509143a490aab36692cbd426764aa4d56486860358dcd5"
+  },
+  {
+    "_id": {
+      "$oid": "687e700c34ab8f89d2408c9c"
+    },
+    "username": "macaco",
+    "email": "123@gmail.com",
+    "password_hash": "scrypt:32768:8:1$JWwURbC4jQY0Lcy0$d202381d65fb35539857295fdcd09b4d7185a7ebb40e1c8d5c2ef316ae2bfe0c3cc5ecdb54ff7333dda87fde19d608500f437490dc4c314b33d9c9eadd0690c9"
   }
 ]

@@ -93,6 +93,15 @@ body {
 .comments .comment-form input,
 .comments .add-comment-btn {
   font-family: 'Chewy', cursive;
+
+ 
+  background-color: #00c8c8;
+  border: none;
+  color: white;
+  border-radius: 0 1em 1em 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
 }
 
 /* 7) Sidebar */
@@ -189,11 +198,29 @@ body {
   color: #fff;
   box-shadow: 0 0 8px #0ff;
 }
+.post-textarea{
 
+  resize: inherit;
+  width: 95%;
+  font-family: 'Chewy', cursive;
+  text-align: center;
+  border-color:#0099aa;
+  border-width: 0.5em;
+  border-radius: 5em;
+  background-color:#dae1e1 ;
+}
+.post-input{
+  resize: inherit;
+  width: 100%;
+  font-family: 'Chewy', cursive;
+  text-align: center;
+  border-color:#0099aa;
+  
+}
 .user-avatar {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto 15px;
+  width: 100em;
+  height: 100em;
+  margin: 0 auto 15em;
   position: relative;
   overflow: hidden;
   object-position: 50% 10%;

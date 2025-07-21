@@ -28,7 +28,7 @@ function renderPosts(list = posts) {
       <p>${post.content}</p>
       <div class="post-meta">
         <span>Publicado por ${post.author}</span>
-        <span>${new Date(post.created_at).toLocaleString()}</span>
+
       </div>
       <div class="actions">
         <button class="seen-btn">Visto (<span>${post.seen_count}</span>)</button>

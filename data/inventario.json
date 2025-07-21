@@ -11,16 +11,6 @@
   },
   {
     "_id": {
-      "$oid": "687d538d817b7474faa23f5e"
-    },
-    "user_id": "687d33e126f9e9c58e5fc0c5",
-    "morty_id": 9,
-    "added_at": {
-      "$date": "2025-07-20T20:37:33.740Z"
-    }
-  },
-  {
-    "_id": {
       "$oid": "687d64988f0e3a69bbf62b58"
     },
     "user_id": "687d33e126f9e9c58e5fc0c4",
@@ -47,6 +37,36 @@
     "morty_id": 12,
     "added_at": {
       "$date": "2025-07-20T22:23:07.540Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "687e6efd34ab8f89d2408c98"
+    },
+    "user_id": "687d33e126f9e9c58e5fc0c5",
+    "morty_id": 2,
+    "added_at": {
+      "$date": "2025-07-21T16:46:53.984Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "687e6f0134ab8f89d2408c99"
+    },
+    "user_id": "687d33e126f9e9c58e5fc0c5",
+    "morty_id": 3,
+    "added_at": {
+      "$date": "2025-07-21T16:46:57.191Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "687e6f0834ab8f89d2408c9a"
+    },
+    "user_id": "687d33e126f9e9c58e5fc0c5",
+    "morty_id": 18,
+    "added_at": {
+      "$date": "2025-07-21T16:47:04.168Z"
     }
   }
 ]

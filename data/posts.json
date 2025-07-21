@@ -27,7 +27,7 @@
     "content": "estaba en medallo mor",
     "author": "felo",
     "user_id": "687d33e126f9e9c58e5fc0c4",
-    "seen_count": 1,
+    "seen_count": 12,
     "comments": [
       {
         "user": "felo",
@@ -85,7 +85,15 @@
     "author": "macias",
     "user_id": "687d67294cd5e703f4f50115",
     "seen_count": 1,
-    "comments": [],
+    "comments": [
+      {
+        "user": "Felo",
+        "text": "Y ese carejopo",
+        "created_at": {
+          "$date": "2025-07-21T16:48:47.688Z"
+        }
+      }
+    ],
     "created_at": {
       "$date": "2025-07-20T22:16:08.878Z"
     },
@@ -109,5 +117,22 @@
     "morty_name": "Morty Punketo",
     "morty_type": "Tijera",
     "morty_img": "/static/images/mortys/pm-100.png"
+  },
+  {
+    "_id": {
+      "$oid": "687e6f5434ab8f89d2408c9b"
+    },
+    "title": "Morty salchichón",
+    "content": "Has visto este pedazo de butifarra?",
+    "author": "Felo",
+    "user_id": "687d33e126f9e9c58e5fc0c5",
+    "seen_count": 0,
+    "comments": [],
+    "created_at": {
+      "$date": "2025-07-21T16:48:20.354Z"
+    },
+    "morty_name": "Morty Gatero",
+    "morty_type": "Tijera",
+    "morty_img": "/static/images/mortys/pm-052.jpg"
   }
 ]
