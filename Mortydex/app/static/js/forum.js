@@ -163,33 +163,31 @@ async function loadRecentActivity() {
   try {
     const res = await fetch('/api/activity');
     const activities = await res.json();
-    
+
     const container = document.getElementById('recentActivity');
     container.innerHTML = '';
-    
-    activities.forEach(activity => {
+
+    // Limita a las 5 actividades más recientes
+    activities.slice(0, 5).forEach(activity => {
       const li = document.createElement('li');
       li.className = 'activity-item';
-      
+
       // Formatea la hora relativa (ej. "hace 5 minutos")
       const timeAgo = formatTimeAgo(new Date(activity.timestamp));
-      
+
       li.innerHTML = `
         <span class="activity-user">${activity.user}</span>
         <span class="activity-action">${activity.action}</span>
         <span class="activity-time">${timeAgo}</span>
       `;
-      
+
       container.appendChild(li);
     });
-    
-  } catch (err) {
-    console.error('Error cargando actividad reciente:', err);
-    // Muestra un mensaje de error elegante
-    const container = document.getElementById('recentActivity');
-    container.innerHTML = '<li>No se pudo cargar la actividad</li>';
+  } catch (error) {
+    console.error('Error al cargar la actividad reciente:', error);
   }
 }
+
 
 function formatTimeAgo(date) {
   const now = new Date();
