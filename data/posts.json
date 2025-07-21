@@ -92,6 +92,13 @@
         "created_at": {
           "$date": "2025-07-21T16:48:47.688Z"
         }
+      },
+      {
+        "user": "macias",
+        "text": "que caja",
+        "created_at": {
+          "$date": "2025-07-21T20:53:38.781Z"
+        }
       }
     ],
     "created_at": {
@@ -110,7 +117,15 @@
     "author": "macias",
     "user_id": "687d67294cd5e703f4f50115",
     "seen_count": 0,
-    "comments": [],
+    "comments": [
+      {
+        "user": "macias",
+        "text": "que miedo ese man",
+        "created_at": {
+          "$date": "2025-07-21T20:53:18.979Z"
+        }
+      }
+    ],
     "created_at": {
       "$date": "2025-07-20T23:07:53.181Z"
     },
@@ -127,7 +142,15 @@
     "author": "Felo",
     "user_id": "687d33e126f9e9c58e5fc0c5",
     "seen_count": 0,
-    "comments": [],
+    "comments": [
+      {
+        "user": "macias",
+        "text": "Ese parcero dizque tin",
+        "created_at": {
+          "$date": "2025-07-21T20:47:00.591Z"
+        }
+      }
+    ],
     "created_at": {
       "$date": "2025-07-21T16:48:20.354Z"
     },
