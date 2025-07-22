@@ -154,11 +154,11 @@
   },
   {
     "_id": {
-      "$oid": "687d6b08c561816a275cc323"
+      "$oid": "687f18574279736b826e4aff"
     },
-    "id": 19,
+    "id": 18,
     "name": "Egg morty",
-    "type": "rock",
-    "img": "/static/images/mortys/pm-019.jpg"
+    "type": "Papel",
+    "img": "/static/images/mortys/pm-018.jpg"
   }
 ]

@@ -5,7 +5,8 @@
     },
     "username": "felo",
     "email": "felo@bancolombio.com",
-    "password_hash": "scrypt:32768:8:1$MQPjKuk5lUyHbIE4$6d4cf7e682e5b80277576f85120eca642dcd191ade3a495786fb798ca6a2b5ce154c4b76496a7aec6148495efce9a697aa8c23ed13081abde30c77de9320a1eb"
+    "password_hash": "scrypt:32768:8:1$MQPjKuk5lUyHbIE4$6d4cf7e682e5b80277576f85120eca642dcd191ade3a495786fb798ca6a2b5ce154c4b76496a7aec6148495efce9a697aa8c23ed13081abde30c77de9320a1eb",
+    "is_admin": true
   },
   {
     "_id": {
