@@ -59,8 +59,27 @@ body {
 /* Logo */
 .logo-container img {
     width: 350px;
-    height: 20;
-     margin-left: -200px;
+    height: auto;
+    margin-left: -200px;
+    max-width: 90vw; /* Nunca más ancho que la pantalla */
+    display: block;
+}
+/* Responsive para tablets */
+@media (max-width: 900px) {
+  .logo-container img {
+    width: 220px;
+    margin-left: -80px;
+  }
+}
+
+/* Responsive para móviles */
+@media (max-width: 600px) {
+  .logo-container img {
+    width: 140px;
+    margin-left: 0;
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 /* Estilo para el botón de ingreso con ícono (cuando el usuario está loggeado) */
 .login-button a {
@@ -302,7 +321,50 @@ body {
     height: auto;
   }
 }
+/* Botones responsivos para móviles y tablets */
+@media (max-width: 900px) {
+  .add-inventory-btn,
+  .delete-morty-btn {
+    padding: 7px 12px;
+    font-size: 0.95rem;
+    border-radius: 16px;
+  }
+  .delete-morty-btn {
+    bottom: 45px;
+  }
+}
 
+@media (max-width: 600px) {
+  .add-inventory-btn,
+  .delete-morty-btn {
+    padding: 6px 8px;
+    font-size: 0.85rem;
+    border-radius: 14px;
+    min-width: 80px;
+  }
+  .add-inventory-btn {
+    bottom: 6px;
+  }
+  .delete-morty-btn {
+    bottom: 38px;
+  }
+}
+
+/* Asegura que los botones no se salgan de la tarjeta en pantallas muy pequeñas */
+@media (max-width: 400px) {
+  .add-inventory-btn,
+  .delete-morty-btn {
+    font-size: 0.75rem;
+    min-width: 60px;
+    padding: 5px 4px;
+  }
+  .add-inventory-btn {
+    bottom: 4px;
+  }
+  .delete-morty-btn {
+    bottom: 30px;
+  }
+}
 @media (max-width:480px) {
   .grid { grid-template-columns: 1fr; }
 
