@@ -1,6 +1,11 @@
 /* inventario.css */
 
-/* Fondo claro con relieve (reutilizable) */
+/* 0) Eliminar fondo global y aplicar blanco */
+body {
+  background: none !important;
+}
+
+/* 1) Fondo claro con relieve */
 .cards-background {
   background-color: #ffffff;
   border-radius: 12px;
@@ -14,7 +19,26 @@
   font-family: 'Chewy', cursive;
 }
 
-/* Sección de subida */
+/* 2) Simulación de perfil logueado */
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #222;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #00c8c8;
+}
+.user-profile span {
+  font-family: 'Chewy', cursive;
+}
+.user-profile .nav-icon {
+  width: 28px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* 3) Sección de subida */
 .upload-section {
   display: flex;
   flex-wrap: wrap;
@@ -55,7 +79,7 @@
   background: #0099aa;
 }
 
-/* Grid de items */
+/* 4) Grid de items */
 .inventory-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -85,6 +109,7 @@
   color: #555;
 }
 
+<<<<<<< HEAD
 /* Botón para quitar del inventario */
 .remove-inventory-btn {
   position: absolute;
@@ -110,4 +135,10 @@
 
 .item-card .img-container:hover .remove-inventory-btn {
   opacity: 1;
+=======
+.nav-inventario.active,
+.nav-inventario.active:hover {
+  background-color: #3498db;
+  color: #fff;
+>>>>>>> b22191b62505c3ddb8b7b3fe64e3cd8768505825
 }

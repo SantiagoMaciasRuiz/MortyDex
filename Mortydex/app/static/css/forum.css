@@ -189,7 +189,13 @@ body {
   color: #333;
 }
 
+.nav-foro.active,
+.nav-foro.active:hover {
+  background-color: #e74c3c;
+  color: #fff;
+}
 
+<<<<<<< HEAD
 .user-profile-card {
   text-align: center;
   background: #222;
@@ -352,3 +358,11 @@ body {
   0% { transform: translateY(0) scale(1); opacity: 0.7; }
   100% { transform: translateY(200px) scale(0.5); opacity: 0; }
 }
+=======
+/* Ocultar logo en dispositivos móviles */
+@media (max-width: 768px) {
+  .logo-container {
+    display: none;
+  }
+}
+>>>>>>> b22191b62505c3ddb8b7b3fe64e3cd8768505825

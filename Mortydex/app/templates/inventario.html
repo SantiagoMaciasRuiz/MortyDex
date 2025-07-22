@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/mortydex.css">
   <link rel="stylesheet" href="/static/css/inventario.css">
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/icons/favicon.png') }}"/>
 </head>
 <body>
   <!-- Header común -->
@@ -19,13 +18,14 @@
       <a href="/hallazgos" class="nav-item nav-foro">
         <img src="/static/images/icons/foro.png" class="nav-icon"><span>Foro</span>
       </a>
-      <a href="/inventario" class="nav-item nav-inventario">
+      <a href="/inventario" class="nav-item nav-inventario active">
         <img src="/static/images/icons/inventario.png" class="nav-icon"><span>Inventario</span>
       </a>
     </div>
     <div class="logo-container">
       <img src="/static/images/icons/logo.png" alt="Logo">
     </div>
+<<<<<<< HEAD
    <div class="login-button">
   {% if session.username %}
     <a href="/hallazgos">
@@ -39,6 +39,13 @@
   {% endif %}
   </div>
 
+=======
+    <!-- Simulación de usuario logueado -->
+    <div class="user-profile">
+      <img src="/static/images/icons/user-circle.png" class="nav-icon" alt="Usuario">
+      <span>JulianOM</span>
+    </div>
+>>>>>>> b22191b62505c3ddb8b7b3fe64e3cd8768505825
   </header>
 
   <main class="inventory-page">
@@ -58,6 +65,7 @@
 
 
       <!-- Grid de inventario -->
+<<<<<<< HEAD
       <section class="inventory-grid">
         {% if items %}
           {% for m in items %}
@@ -76,6 +84,9 @@
           <p style="text-align:center;">Tu inventario está vacío.</p>
         {% endif %}
       </section>
+=======
+      <section class="inventory-grid" id="inventoryGrid"></section>
+>>>>>>> b22191b62505c3ddb8b7b3fe64e3cd8768505825
 
 
     </div>

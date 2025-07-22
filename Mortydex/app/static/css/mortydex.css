@@ -304,6 +304,7 @@ body {
     box-sizing: border-box;
   }
 }
+<<<<<<< HEAD
 
 /* Estilo para el texto dentro del span cuando el usuario está loggeado */
 .login-button span {
@@ -326,3 +327,18 @@ body {
 .img-container:hover .hover-logo {
   opacity: 1;
 }
+=======
+/* Ocultar logo en dispositivos móviles */
+@media (max-width: 768px) {
+  .logo-container {
+    display: none;
+  }
+}
+
+/* Aplica el mismo estilo al item activo */
+.nav-home.active,
+.nav-home.active:hover {
+  background-color: #1abc9c;
+  color: #fff;
+}
+>>>>>>> b22191b62505c3ddb8b7b3fe64e3cd8768505825

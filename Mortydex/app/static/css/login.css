@@ -75,6 +75,7 @@ body {
   color: #0099aa;
 }
 
+<<<<<<< HEAD
 
 /* Estilos para mensajes flash */
 .alert {
@@ -100,4 +101,11 @@ body {
   background-color: #d1ecf1;
   color: #0c5460;
   border: 1px solid #bee5eb;
+=======
+/* Ocultar logo en dispositivos móviles */
+@media (max-width: 768px) {
+  .logo-container {
+    display: none;
+  }
+>>>>>>> b22191b62505c3ddb8b7b3fe64e3cd8768505825
 }
