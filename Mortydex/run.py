@@ -634,5 +634,21 @@ def eliminar_morty(morty_id):
         return jsonify({'success': True})
     else:
         return jsonify({'success': False, 'message': 'Morty no encontrado'}), 404
+@app.route('/api/mortys/<int:morty_id>/editar', methods=['PUT'])
+def editar_morty(morty_id):
+    if not session.get('is_admin'):
+        return jsonify({'success': False, 'message': 'Solo administradores pueden editar Mortys'}), 403
+
+    data = request.get_json()
+    update = {}
+    if 'name' in data: update['name'] = data['name']
+    if 'type' in data: update['type'] = data['type']
+    if 'img' in data: update['img'] = data['img']
+
+    result = mortys_collection.update_one({'id': morty_id}, {'$set': update})
+    if result.modified_count == 1:
+        return jsonify({'success': True})
+    else:
+        return jsonify({'success': False, 'message': 'No se pudo actualizar el Morty'}), 400
 if __name__ == '__main__':
     app.run(debug=False)

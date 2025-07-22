@@ -74,6 +74,23 @@
     </div>
   </main>
 
+  <div id="editMortyModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close" onclick="closeEditModal()">&times;</span>
+    <h2>Editar Morty</h2>
+    <form id="editMortyForm">
+      <input type="hidden" id="editMortyId">
+      <label>Nombre:</label>
+      <input type="text" id="editMortyName" required>
+      <label>Tipo:</label>
+      <input type="text" id="editMortyType" required>
+      <label>Imagen (URL):</label>
+      <input type="text" id="editMortyImg" required>
+      <button type="submit">Guardar cambios</button>
+    </form>
+  </div>
+</div>
+
   <p>is_admin en plantilla: {{ is_admin }}</p>
   <script>
     window.IS_ADMIN = {{ 'true' if is_admin else 'false' }};

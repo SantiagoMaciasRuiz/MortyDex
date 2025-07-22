@@ -37,7 +37,10 @@ function displayMortys(list = mortys) {
         <img src="${m.img}" alt="${m.name}">
         <img src="/static/images/icons/logo.png" alt="Logo" class="hover-logo"/>
         <button class="add-inventory-btn" data-morty-id="${m.id}">Agregar al inventario</button>
-        ${window.IS_ADMIN ? `<button class="delete-morty-btn" data-morty-id="${m.id}">Borrar</button>` : ''}
+        ${window.IS_ADMIN ? `
+          <button class="delete-morty-btn" data-morty-id="${m.id}">Borrar</button>
+          <button class="edit-morty-btn" data-morty-id="${m.id}">Editar</button>
+        ` : ''}
       </div>
       <div class="card-text">
         <h3>#${m.id} ${m.name}</h3>
@@ -120,5 +123,50 @@ function agregarAlInventario(mortyId) {
     }
   });
 }
+
+// Mostrar modal al hacer click en editar
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('edit-morty-btn')) {
+    const mortyId = e.target.getAttribute('data-morty-id');
+    const morty = mortys.find(m => m.id == mortyId);
+    if (morty) {
+      document.getElementById('editMortyId').value = morty.id;
+      document.getElementById('editMortyName').value = morty.name;
+      document.getElementById('editMortyType').value = morty.type;
+      document.getElementById('editMortyImg').value = morty.img;
+      document.getElementById('editMortyModal').style.display = 'flex';
+    }
+  }
+});
+
+function closeEditModal() {
+  document.getElementById('editMortyModal').style.display = 'none';
+}
+
+// Enviar cambios al backend
+document.getElementById('editMortyForm').onsubmit = function(e) {
+  e.preventDefault();
+  const mortyId = document.getElementById('editMortyId').value;
+  const data = {
+    name: document.getElementById('editMortyName').value,
+    type: document.getElementById('editMortyType').value,
+    img: document.getElementById('editMortyImg').value
+  };
+  fetch(`/api/mortys/${mortyId}/editar`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(resp => {
+    if (resp.success) {
+      alert('Morty actualizado');
+      closeEditModal();
+      fetchMortys();
+    } else {
+      alert(resp.message || 'Error al actualizar');
+    }
+  });
+};
 
 document.addEventListener('DOMContentLoaded', fetchMortys);

@@ -64,6 +64,7 @@ body {
     max-width: 90vw; /* Nunca más ancho que la pantalla */
     display: block;
 }
+
 /* Responsive para tablets */
 @media (max-width: 900px) {
   .logo-container img {
@@ -81,6 +82,7 @@ body {
     margin-left: auto;
   }
 }
+
 /* Estilo para el botón de ingreso con ícono (cuando el usuario está loggeado) */
 .login-button a {
   display: flex;
@@ -240,6 +242,33 @@ body {
   opacity: 1;
 }
 
+/* Botón para editar Morty */
+.edit-morty-btn {
+  position: absolute;
+  bottom: 90px; /* Más arriba que el de borrar */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #3498db; /* Azul */
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.3s, background 0.3s;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(52,152,219,0.2);
+}
+
+.img-container:hover .edit-morty-btn {
+  opacity: 1;
+}
+
+.edit-morty-btn:hover {
+  background: #217dbb;
+}
+
 /* ---------------------------- */
 /* TARJETA UNIFORME (sin cambiar) */
 /* ---------------------------- */
@@ -321,50 +350,7 @@ body {
     height: auto;
   }
 }
-/* Botones responsivos para móviles y tablets */
-@media (max-width: 900px) {
-  .add-inventory-btn,
-  .delete-morty-btn {
-    padding: 7px 12px;
-    font-size: 0.95rem;
-    border-radius: 16px;
-  }
-  .delete-morty-btn {
-    bottom: 45px;
-  }
-}
 
-@media (max-width: 600px) {
-  .add-inventory-btn,
-  .delete-morty-btn {
-    padding: 6px 8px;
-    font-size: 0.85rem;
-    border-radius: 14px;
-    min-width: 80px;
-  }
-  .add-inventory-btn {
-    bottom: 6px;
-  }
-  .delete-morty-btn {
-    bottom: 38px;
-  }
-}
-
-/* Asegura que los botones no se salgan de la tarjeta en pantallas muy pequeñas */
-@media (max-width: 400px) {
-  .add-inventory-btn,
-  .delete-morty-btn {
-    font-size: 0.75rem;
-    min-width: 60px;
-    padding: 5px 4px;
-  }
-  .add-inventory-btn {
-    bottom: 4px;
-  }
-  .delete-morty-btn {
-    bottom: 30px;
-  }
-}
 @media (max-width:480px) {
   .grid { grid-template-columns: 1fr; }
 
@@ -412,4 +398,49 @@ body {
 
 .img-container:hover .hover-logo {
   opacity: 1;
+}
+.modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: flex; align-items: center; justify-content: center;
+}
+.modal-content {
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 12px;
+  min-width: 300px;
+  max-width: 90vw;
+  position: relative;
+}
+.close {
+  position: absolute;
+  top: 10px; right: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.modal-content label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+.modal-content input {
+  width: 100%;
+  padding: 6px;
+  margin-top: 4px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-family: 'Chewy', cursive;
+}
+.modal-content button[type="submit"] {
+  margin-top: 16px;
+  background: #3498db;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
 }
