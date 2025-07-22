@@ -154,15 +154,6 @@
   },
   {
     "_id": {
-      "$oid": "687d4f7d865b75a804221718"
-    },
-    "id": 18,
-    "name": "sadas",
-    "type": "asdasd",
-    "img": "/static/images/mortys/pm-018.jpg"
-  },
-  {
-    "_id": {
       "$oid": "687d6b08c561816a275cc323"
     },
     "id": 19,
