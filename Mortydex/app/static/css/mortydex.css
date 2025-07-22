@@ -173,7 +173,32 @@ body {
   max-width: 100%;
   object-fit: contain;
 }
+/* Botón para borrar Morty */
+.delete-morty-btn {
+  position: absolute;
+  bottom: 50px; /* Un poco más arriba que el de agregar */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #e74c3c;         /* Rojo fuerte */
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.3s, background 0.3s;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(231,76,60,0.2);
+}
 
+.img-container:hover .delete-morty-btn {
+  opacity: 1;
+}
+
+.delete-morty-btn:hover {
+  background: #c0392b; /* Rojo más oscuro al pasar el mouse */
+}
 /* Botón para añadir a inventario */
 .add-inventory-btn {
   position: absolute;

@@ -66,41 +66,51 @@ def ping():
         return jsonify({'error': str(e)})
 # Clase Usuario para manejo de datos
 class Usuario:
-    def __init__(self, username, email, password_hash=None):
+    def __init__(self, username, email, password_hash=None, is_admin=False):
         self.username = username
         self.email = email
         self.password_hash = password_hash
-    
+        self.is_admin = is_admin  # Nuevo campo
+
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
-    
+
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
-    
+
     def save(self):
         user_data = {
             'username': self.username,
             'email': self.email,
-            'password_hash': self.password_hash
+            'password_hash': self.password_hash,
+            'is_admin': self.is_admin  # Guardar el campo
         }
         result = users_collection.insert_one(user_data)
         return result.inserted_id
-    
+
     @staticmethod
     def find_by_username(username):
         user_data = users_collection.find_one({'username': username})
         if user_data:
-            user = Usuario(user_data['username'], user_data['email'])
+            user = Usuario(
+                user_data['username'],
+                user_data['email'],
+                is_admin=user_data.get('is_admin', False)
+            )
             user.password_hash = user_data['password_hash']
             user.id = str(user_data['_id'])
             return user
         return None
-    
+
     @staticmethod
     def find_by_email(email):
         user_data = users_collection.find_one({'email': email})
         if user_data:
-            user = Usuario(user_data['username'], user_data['email'])
+            user = Usuario(
+                user_data['username'],
+                user_data['email'],
+                is_admin=user_data.get('is_admin', False)
+            )
             user.password_hash = user_data['password_hash']
             user.id = str(user_data['_id'])
             return user
@@ -115,7 +125,8 @@ def crear_sesion():
     user = Usuario.find_by_username(username)
     if user:
         session['user_id'] = user.id
-        session['username'] = user.username  # 👈 esta línea es clave
+        session['username'] = user.username
+        session['is_admin'] = user.is_admin   # <-- AGREGA ESTA LÍNEA
         return jsonify({'message': 'Sesión iniciada correctamente'}), 200
 
     return jsonify({'error': 'Usuario no encontrado'}), 404
@@ -134,7 +145,9 @@ def get_mortys():
 # Página principal (Mortydex)
 @app.route('/')
 def index():
-    return render_template('index.html')
+    is_admin = session.get('is_admin', False)
+    print("🧠 Session:", dict(session))  # <-- Agrega esto
+    return render_template('index.html', is_admin=is_admin)
 
 # Página del foro (Hallazgos) - ahora requiere login
 @app.route('/hallazgos')
@@ -234,6 +247,7 @@ def login():
             # Login exitoso
             session['user_id'] = user.id
             session['username'] = user.username
+            session['is_admin'] = user.is_admin   # <-- AGREGA ESTA LÍNEA
             flash(f'¡Bienvenido, {user.username}!', 'success')
             
             # Redirigir a la página que intentaba acceder o al inicio
@@ -409,8 +423,7 @@ def subir_morty():
     #  Agregar al inventario del usuario
     items_collection.insert_one({
         "user_id": session['user_id'],
-        "morty_id": new_id,  # <-- el id entero del Morty
-        "added_at": datetime.utcnow()
+        "morty_id": new_id  # <-- el id entero del Morty
     })
 
     flash("¡Nuevo Morty subido y agregado a tu inventario!", "success")
@@ -609,5 +622,17 @@ def get_recent_activity():
     except Exception as e:
         print(f"Error en get_recent_activity: {str(e)}")
         return jsonify({'error': str(e)}), 500
+@app.route('/api/mortys/<int:morty_id>/eliminar', methods=['DELETE'])
+def eliminar_morty(morty_id):
+    if not session.get('is_admin'):
+        return jsonify({'success': False, 'message': 'Solo administradores pueden borrar Mortys'}), 403
+
+    result = mortys_collection.delete_one({'id': morty_id})
+    if result.deleted_count == 1:
+        # Borra también del inventario de todos los usuarios
+        items_collection.delete_many({'morty_id': morty_id})
+        return jsonify({'success': True})
+    else:
+        return jsonify({'success': False, 'message': 'Morty no encontrado'}), 404
 if __name__ == '__main__':
     app.run(debug=False)

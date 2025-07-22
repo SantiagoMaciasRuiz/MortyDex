@@ -37,6 +37,7 @@ function displayMortys(list = mortys) {
         <img src="${m.img}" alt="${m.name}">
         <img src="/static/images/icons/logo.png" alt="Logo" class="hover-logo"/>
         <button class="add-inventory-btn" data-morty-id="${m.id}">Agregar al inventario</button>
+        ${window.IS_ADMIN ? `<button class="delete-morty-btn" data-morty-id="${m.id}">Borrar</button>` : ''}
       </div>
       <div class="card-text">
         <h3>#${m.id} ${m.name}</h3>
@@ -53,6 +54,27 @@ function displayMortys(list = mortys) {
       agregarAlInventario(mortyId);
     };
   });
+
+  // Manejar el botón de borrar solo si es admin
+  if (window.IS_ADMIN) {
+    grid.querySelectorAll('.delete-morty-btn').forEach(btn => {
+      btn.onclick = () => {
+        const mortyId = btn.getAttribute('data-morty-id');
+        if (confirm('¿Seguro que quieres borrar este Morty?')) {
+          fetch(`/api/mortys/${mortyId}/eliminar`, { method: 'DELETE' })
+            .then(res => res.json())
+            .then(data => {
+              if (data.success) {
+                alert('Morty eliminado');
+                fetchMortys();
+              } else {
+                alert(data.message || 'No se pudo eliminar.');
+              }
+            });
+        }
+      };
+    });
+  }
 
   const info = document.getElementById('pageInfo');
   info.textContent = `Página ${currentPage}`;
