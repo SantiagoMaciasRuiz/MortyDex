@@ -149,7 +149,7 @@
     },
     "id": 17,
     "name": "Old Morty",
-    "type": "Tijera",
+    "type": "papel",
     "img": "/static/images/mortys/pm-017.jpg"
   },
   {
@@ -157,7 +157,7 @@
       "$oid": "687f18574279736b826e4aff"
     },
     "id": 18,
-    "name": "Huevo Morty",
+    "name": "Egg morty",
     "type": "Papel",
     "img": "/static/images/mortys/pm-018.jpg"
   }
