@@ -1,43 +1,32 @@
-// mortys.js - Lógica con iconos de tipo y texto desplazado
-
-const mortys = [
-  { id: 1, name: 'Morty Cascado', type: 'Piedra', img: '/static/images/mortys/pm-001.jpg' },
-  { id: 2, name: 'Morty Conejo', type: 'Papel', img: '/static/images/mortys/pm-008.jpg' },
-  { id: 3, name: 'Morty Mutado', type: 'Papel', img: '/static/images/mortys/pm-015.jpg' },
-  { id: 4, name: 'Morty Fusionado', type: 'Tijera', img: '/static/images/mortys/pm-047.jpg' },
-  { id: 5, name: 'Morty Gatero', type: 'Tijera', img: '/static/images/mortys/pm-052.jpg' },
-  { id: 6, name: 'Morty Gymbro', type: 'Papel', img: '/static/images/mortys/pm-054.jpg' },
-  { id: 7, name: 'Morty Venezolano', type: 'Piedra', img: '/static/images/mortys/pm-058.jpg' },
-  { id: 8, name: 'Morty Mago', type: 'Tijera', img: '/static/images/mortys/pm-059.jpg' },
-  { id: 9, name: 'Morty Mullet', type: 'Papel', img: '/static/images/mortys/pm-085.jpg' },
-  { id: 10, name: 'Morty Afro', type: 'Piedra', img: '/static/images/mortys/pm-087.png' },
-  { id: 11, name: 'Morty CareNalga', type: 'Papel', img: '/static/images/mortys/pm-283.png' },
-  { id: 12, name: 'Morty Punketo', type: 'Tijera', img: '/static/images/mortys/pm-100.png' },
-  { id: 13, name: 'Morty Ingeniero de Sistemas', type: 'Papel', img: '/static/images/mortys/pm-240.png' },
-  { id: 14, name: 'Morty TaxiDriver', type: 'Tijera', img: '/static/images/mortys/pm-172.png' },
-  { id: 15, name: 'Morty Vampiro', type: 'Papel', img: '/static/images/mortys/pm-153.png' }
-
-];
-
+let mortys = [];
 let currentPage = 1;
 const itemsPerPage = 9;
 
-// Rutas de iconos por tipo
 const iconMap = {
   'Piedra': '/static/images/icons/rock.png',
   'Papel':  '/static/images/icons/paper.png',
   'Tijera': '/static/images/icons/scissors.png'
 };
 
+async function fetchMortys() {
+  try {
+    const response = await fetch('/api/mortys');
+    mortys = await response.json();
+    displayMortys();
+  } catch (err) {
+    console.error('Error cargando mortys:', err);
+  }
+}
+
 function displayMortys(list = mortys) {
   const grid = document.getElementById('mortyGrid');
   grid.innerHTML = '';
 
   const start = (currentPage - 1) * itemsPerPage;
-  const end   = start + itemsPerPage;
-  const slice = list.slice(start, end);
+  const end = start + itemsPerPage;
+  const pageItems = list.slice(start, end);
 
-  slice.forEach(m => {
+  pageItems.forEach(m => {
     const card = document.createElement('div');
     card.className = 'card';
 
@@ -46,6 +35,12 @@ function displayMortys(list = mortys) {
     card.innerHTML = `
       <div class="img-container">
         <img src="${m.img}" alt="${m.name}">
+        <img src="/static/images/icons/logo.png" alt="Logo" class="hover-logo"/>
+        <button class="add-inventory-btn" data-morty-id="${m.id}">Agregar al inventario</button>
+        ${window.IS_ADMIN ? `
+          <button class="delete-morty-btn" data-morty-id="${m.id}">Borrar</button>
+          <button class="edit-morty-btn" data-morty-id="${m.id}">Editar</button>
+        ` : ''}
       </div>
       <div class="card-text">
         <h3>#${m.id} ${m.name}</h3>
@@ -56,10 +51,36 @@ function displayMortys(list = mortys) {
     grid.appendChild(card);
   });
 
+  grid.querySelectorAll('.add-inventory-btn').forEach(btn => {
+    btn.onclick = () => {
+      const mortyId = btn.getAttribute('data-morty-id');
+      agregarAlInventario(mortyId);
+    };
+  });
+
+  // Manejar el botón de borrar solo si es admin
+  if (window.IS_ADMIN) {
+    grid.querySelectorAll('.delete-morty-btn').forEach(btn => {
+      btn.onclick = () => {
+        const mortyId = btn.getAttribute('data-morty-id');
+        if (confirm('¿Seguro que quieres borrar este Morty?')) {
+          fetch(`/api/mortys/${mortyId}/eliminar`, { method: 'DELETE' })
+            .then(res => res.json())
+            .then(data => {
+              if (data.success) {
+                alert('Morty eliminado');
+                fetchMortys();
+              } else {
+                alert(data.message || 'No se pudo eliminar.');
+              }
+            });
+        }
+      };
+    });
+  }
+
   const info = document.getElementById('pageInfo');
-  info.textContent = (list === mortys)
-    ? `Página ${currentPage}`
-    : `Resultados: ${list.length}`;
+  info.textContent = `Página ${currentPage}`;
 }
 
 function nextPage() {
@@ -86,4 +107,66 @@ function filterMortys() {
   displayMortys(filtered);
 }
 
-document.addEventListener('DOMContentLoaded', () => displayMortys());
+function agregarAlInventario(mortyId) {
+  fetch('/api/inventario/agregar', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ morty_id: mortyId })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      alert('¡Morty agregado!');
+      location.reload();
+    } else {
+      alert(data.message || 'No se pudo agregar.');
+    }
+  });
+}
+
+// Mostrar modal al hacer click en editar
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('edit-morty-btn')) {
+    const mortyId = e.target.getAttribute('data-morty-id');
+    const morty = mortys.find(m => m.id == mortyId);
+    if (morty) {
+      document.getElementById('editMortyId').value = morty.id;
+      document.getElementById('editMortyName').value = morty.name;
+      document.getElementById('editMortyType').value = morty.type;
+      document.getElementById('editMortyImg').value = morty.img;
+      document.getElementById('editMortyModal').style.display = 'flex';
+    }
+  }
+});
+
+function closeEditModal() {
+  document.getElementById('editMortyModal').style.display = 'none';
+}
+
+// Enviar cambios al backend
+document.getElementById('editMortyForm').onsubmit = function(e) {
+  e.preventDefault();
+  const mortyId = document.getElementById('editMortyId').value;
+  const data = {
+    name: document.getElementById('editMortyName').value,
+    type: document.getElementById('editMortyType').value,
+    img: document.getElementById('editMortyImg').value
+  };
+  fetch(`/api/mortys/${mortyId}/editar`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(resp => {
+    if (resp.success) {
+      alert('Morty actualizado');
+      closeEditModal();
+      fetchMortys();
+    } else {
+      alert(resp.message || 'Error al actualizar');
+    }
+  });
+};
+
+document.addEventListener('DOMContentLoaded', fetchMortys);

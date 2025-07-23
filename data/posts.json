@@ -1,0 +1,161 @@
+[
+  {
+    "_id": {
+      "$oid": "687d33e126f9e9c58e5fc0c3"
+    },
+    "title": "Morty Vampiro avistado",
+    "content": "Un Morty Vampiro apareció en el cementerio de Itagüí, ¡cuidado con los colmillos!",
+    "author": "Beth",
+    "seen_count": 5,
+    "comments": [
+      {
+        "user": "Beth",
+        "text": "¡Cuidado con esos colmillos!"
+      }
+    ],
+    "morty_img": "/static/images/mortys/PM-153.png",
+    "morty_type": "Oscuro",
+    "created_at": {
+      "$date": "2025-07-14T21:51:45.491Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "687d66597e34032247a8272d"
+    },
+    "title": "Morty Sayayin",
+    "content": "estaba en medallo mor",
+    "author": "felo",
+    "user_id": "687d33e126f9e9c58e5fc0c4",
+    "seen_count": 12,
+    "comments": [
+      {
+        "user": "felo",
+        "text": "que miedo ese pirobo",
+        "created_at": {
+          "$date": "2025-07-20T21:59:46.001Z"
+        }
+      }
+    ],
+    "created_at": {
+      "$date": "2025-07-20T21:57:45.621Z"
+    },
+    "morty_name": "Morty Fusionado",
+    "morty_type": "Tijera",
+    "morty_img": "/static/images/mortys/pm-047.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "687d66ef4cd5e703f4f50114"
+    },
+    "title": "en castilla vi un loquito morty",
+    "content": "casi me roba",
+    "author": "felo",
+    "user_id": "687d33e126f9e9c58e5fc0c4",
+    "seen_count": 1,
+    "comments": [
+      {
+        "user": "felo",
+        "text": "alguien mas lo vio ?",
+        "created_at": {
+          "$date": "2025-07-20T22:00:34.016Z"
+        }
+      },
+      {
+        "user": "macias",
+        "text": "yoooo",
+        "created_at": {
+          "$date": "2025-07-20T22:01:30.761Z"
+        }
+      }
+    ],
+    "created_at": {
+      "$date": "2025-07-20T22:00:15.981Z"
+    },
+    "morty_name": "Morty Ingeniero de Sistemas",
+    "morty_type": "Papel",
+    "morty_img": "/static/images/mortys/pm-240.png"
+  },
+  {
+    "_id": {
+      "$oid": "687d6aa8c561816a275cc321"
+    },
+    "title": "en manizales habia uno ",
+    "content": "yo estaba loquito y paso con su rasho laser",
+    "author": "macias",
+    "user_id": "687d67294cd5e703f4f50115",
+    "seen_count": 1,
+    "comments": [
+      {
+        "user": "Felo",
+        "text": "Y ese carejopo",
+        "created_at": {
+          "$date": "2025-07-21T16:48:47.688Z"
+        }
+      },
+      {
+        "user": "macias",
+        "text": "que caja",
+        "created_at": {
+          "$date": "2025-07-21T20:53:38.781Z"
+        }
+      }
+    ],
+    "created_at": {
+      "$date": "2025-07-20T22:16:08.878Z"
+    },
+    "morty_name": "Morty CareNalga",
+    "morty_type": "Papel",
+    "morty_img": "/static/images/mortys/pm-283.png"
+  },
+  {
+    "_id": {
+      "$oid": "687d76c9996951c71c357122"
+    },
+    "title": "Morty Sayayin",
+    "content": "Foto en planeta vegeta",
+    "author": "macias",
+    "user_id": "687d67294cd5e703f4f50115",
+    "seen_count": 0,
+    "comments": [
+      {
+        "user": "macias",
+        "text": "que miedo ese man",
+        "created_at": {
+          "$date": "2025-07-21T20:53:18.979Z"
+        }
+      }
+    ],
+    "created_at": {
+      "$date": "2025-07-20T23:07:53.181Z"
+    },
+    "morty_name": "Morty Punketo",
+    "morty_type": "Tijera",
+    "morty_img": "/static/images/mortys/pm-100.png"
+  },
+  {
+    "_id": {
+      "$oid": "687e6f5434ab8f89d2408c9b"
+    },
+    "title": "Morty salchichón",
+    "content": "Has visto este pedazo de butifarra?",
+    "author": "Felo",
+    "user_id": "687d33e126f9e9c58e5fc0c5",
+    "seen_count": 0,
+    "comments": [
+      {
+        "user": "macias",
+        "text": "Ese parcero dizque tin",
+        "created_at": {
+          "$date": "2025-07-21T20:47:00.591Z"
+        }
+      }
+    ],
+    "created_at": {
+      "$date": "2025-07-21T16:48:20.354Z"
+    },
+    "morty_name": "Morty Gatero",
+    "morty_type": "Tijera",
+    "morty_img": "/static/images/mortys/pm-052.jpg"
+  }
+]

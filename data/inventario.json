@@ -1,0 +1,129 @@
+[
+  {
+    "_id": {
+      "$oid": "687d5325ecd62c2973d0b81d"
+    },
+    "user_id": "687d33e126f9e9c58e5fc0c5",
+    "morty_id": 1,
+    "added_at": {
+      "$date": "2025-07-20T20:35:49.449Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "687d64988f0e3a69bbf62b58"
+    },
+    "user_id": "687d33e126f9e9c58e5fc0c4",
+    "morty_id": 1,
+    "added_at": {
+      "$date": "2025-07-20T21:50:16.730Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "687d6c4b6ba471976b9229a0"
+    },
+    "user_id": "687d67294cd5e703f4f50115",
+    "morty_id": 12,
+    "added_at": {
+      "$date": "2025-07-20T22:23:07.540Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "687e6efd34ab8f89d2408c98"
+    },
+    "user_id": "687d33e126f9e9c58e5fc0c5",
+    "morty_id": 2,
+    "added_at": {
+      "$date": "2025-07-21T16:46:53.984Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "687e6f0134ab8f89d2408c99"
+    },
+    "user_id": "687d33e126f9e9c58e5fc0c5",
+    "morty_id": 3,
+    "added_at": {
+      "$date": "2025-07-21T16:46:57.191Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "687e9493a8c62ceb610be72f"
+    },
+    "user_id": "687e700c34ab8f89d2408c9c",
+    "morty_id": 1,
+    "added_at": {
+      "$date": "2025-07-21T19:27:15.635Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "687e949ca8c62ceb610be730"
+    },
+    "user_id": "687e700c34ab8f89d2408c9c",
+    "morty_id": 2,
+    "added_at": {
+      "$date": "2025-07-21T19:27:24.501Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "687e94a4a8c62ceb610be731"
+    },
+    "user_id": "687e700c34ab8f89d2408c9c",
+    "morty_id": 4,
+    "added_at": {
+      "$date": "2025-07-21T19:27:32.662Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "687e94aca8c62ceb610be732"
+    },
+    "user_id": "687e700c34ab8f89d2408c9c",
+    "morty_id": 8,
+    "added_at": {
+      "$date": "2025-07-21T19:27:40.779Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "687ea273a8c62ceb610be733"
+    },
+    "user_id": "687c47630bbd14f807d3c37c",
+    "morty_id": 1,
+    "added_at": {
+      "$date": "2025-07-21T20:26:27.860Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "687f18574279736b826e4b00"
+    },
+    "user_id": "687d33e126f9e9c58e5fc0c4",
+    "morty_id": 18
+  },
+  {
+    "_id": {
+      "$oid": "687f1a594279736b826e4b01"
+    },
+    "user_id": "687d67294cd5e703f4f50115",
+    "morty_id": 8,
+    "added_at": {
+      "$date": "2025-07-22T04:58:01.033Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "687f1a5b4279736b826e4b02"
+    },
+    "user_id": "687d67294cd5e703f4f50115",
+    "morty_id": 3,
+    "added_at": {
+      "$date": "2025-07-22T04:58:03.072Z"
+    }
+  }
+]

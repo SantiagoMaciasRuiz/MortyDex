@@ -1,0 +1,164 @@
+[
+  {
+    "_id": {
+      "$oid": "687d33e126f9e9c58e5fc0b2"
+    },
+    "id": 1,
+    "name": "Morty Cascado",
+    "type": "Piedra",
+    "img": "/static/images/mortys/pm-001.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "687d33e126f9e9c58e5fc0b3"
+    },
+    "id": 2,
+    "name": "Morty Conejo",
+    "type": "Papel",
+    "img": "/static/images/mortys/pm-008.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "687d33e126f9e9c58e5fc0b4"
+    },
+    "id": 3,
+    "name": "Morty Mutado",
+    "type": "Papel",
+    "img": "/static/images/mortys/pm-015.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "687d33e126f9e9c58e5fc0b5"
+    },
+    "id": 4,
+    "name": "Morty Fusionado",
+    "type": "Tijera",
+    "img": "/static/images/mortys/pm-047.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "687d33e126f9e9c58e5fc0b6"
+    },
+    "id": 5,
+    "name": "Morty Gatero",
+    "type": "Tijera",
+    "img": "/static/images/mortys/pm-052.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "687d33e126f9e9c58e5fc0b7"
+    },
+    "id": 6,
+    "name": "Morty Gymbro",
+    "type": "Papel",
+    "img": "/static/images/mortys/pm-054.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "687d33e126f9e9c58e5fc0b8"
+    },
+    "id": 7,
+    "name": "Morty Venezolano",
+    "type": "Piedra",
+    "img": "/static/images/mortys/pm-058.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "687d33e126f9e9c58e5fc0b9"
+    },
+    "id": 8,
+    "name": "Morty Mago",
+    "type": "Tijera",
+    "img": "/static/images/mortys/pm-059.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "687d33e126f9e9c58e5fc0ba"
+    },
+    "id": 9,
+    "name": "Morty Mullet",
+    "type": "Papel",
+    "img": "/static/images/mortys/pm-085.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "687d33e126f9e9c58e5fc0bb"
+    },
+    "id": 10,
+    "name": "Morty Afro",
+    "type": "Piedra",
+    "img": "/static/images/mortys/pm-087.png"
+  },
+  {
+    "_id": {
+      "$oid": "687d33e126f9e9c58e5fc0bc"
+    },
+    "id": 11,
+    "name": "Morty CareNalga",
+    "type": "Papel",
+    "img": "/static/images/mortys/pm-283.png"
+  },
+  {
+    "_id": {
+      "$oid": "687d33e126f9e9c58e5fc0bd"
+    },
+    "id": 12,
+    "name": "Morty Punketo",
+    "type": "Tijera",
+    "img": "/static/images/mortys/pm-100.png"
+  },
+  {
+    "_id": {
+      "$oid": "687d33e126f9e9c58e5fc0be"
+    },
+    "id": 13,
+    "name": "Morty Ingeniero de Sistemas",
+    "type": "Papel",
+    "img": "/static/images/mortys/pm-240.png"
+  },
+  {
+    "_id": {
+      "$oid": "687d33e126f9e9c58e5fc0bf"
+    },
+    "id": 14,
+    "name": "Morty TaxiDriver",
+    "type": "Tijera",
+    "img": "/static/images/mortys/pm-172.png"
+  },
+  {
+    "_id": {
+      "$oid": "687d33e126f9e9c58e5fc0c0"
+    },
+    "id": 15,
+    "name": "Morty Vampiro",
+    "type": "Papel",
+    "img": "/static/images/mortys/pm-153.png"
+  },
+  {
+    "_id": {
+      "$oid": "687d33e126f9e9c58e5fc0c1"
+    },
+    "id": 16,
+    "name": "Morty Pirata",
+    "type": "Tijera",
+    "img": "/static/images/mortys/PM-016.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "687d4f6a865b75a804221716"
+    },
+    "id": 17,
+    "name": "Old Morty",
+    "type": "Tijera",
+    "img": "/static/images/mortys/pm-017.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "687f18574279736b826e4aff"
+    },
+    "id": 18,
+    "name": "Huevo Morty",
+    "type": "Papel",
+    "img": "/static/images/mortys/pm-018.jpg"
+  }
+]

@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/static/css/mortydex.css"/>
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/icons/favicon.png') }}"/>
-
 </head>
 <body>
   <!-- HEADER PERSONALIZADO -->
@@ -33,16 +32,32 @@
       <img src="/static/images/icons/logo.png" alt="Rick and Morty Logo"/>
     </div>
 
-    <!-- Botón Ingresar -->
+    <!-- Botón Ingresar o Usuario logueado -->
     <div class="login-button">
-      <a href="/login">
-        <img src="/static/images/icons/Login.png" alt="Ingresar" class="nav-icon"/>
-        Ingresar
-      </a>
+      {% if session.username %}
+        <span>¡Hola, {{ session.username }}!</span>
+        <a href="/hallazgos">
+          <img src="/static/images/icons/user_icon.jpg" alt="Salir" class="nav-icon"/>
+        </a>
+      {% else %}
+        <a href="/login">
+          <img src="/static/images/icons/Login.png" alt="Ingresar" class="nav-icon"/>
+          Ingresar
+        </a>
+      {% endif %}
     </div>
   </header>
 
   <main>
+    <!-- Mostrar mensajes de éxito/error -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
     <section class="search-section">
       <input type="text" id="searchInput" placeholder="Nombre o Tipo de Morty"/>
       <button onclick="filterMortys()">Buscar</button>
@@ -59,6 +74,27 @@
     </div>
   </main>
 
+  <div id="editMortyModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close" onclick="closeEditModal()">&times;</span>
+    <h2>Editar Morty</h2>
+    <form id="editMortyForm">
+      <input type="hidden" id="editMortyId">
+      <label>Nombre:</label>
+      <input type="text" id="editMortyName" required>
+      <label>Tipo:</label>
+      <input type="text" id="editMortyType" required>
+      <label>Imagen (URL):</label>
+      <input type="text" id="editMortyImg" required>
+      <button type="submit">Guardar cambios</button>
+    </form>
+  </div>
+</div>
+
+  <p>is_admin en plantilla: {{ is_admin }}</p>
+  <script>
+    window.IS_ADMIN = {{ 'true' if is_admin else 'false' }};
+  </script>
   <script defer src="/static/js/mortys.js"></script>
 </body>
 </html>
